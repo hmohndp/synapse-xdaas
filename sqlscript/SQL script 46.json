@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 46",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [zip3_from]\n,[state]\n,[zip3_to]\n FROM [dim].[zip3_pop_lt_20k_t]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

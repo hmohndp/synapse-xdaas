@@ -1,0 +1,20 @@
+{
+	"name": "elsevier_step_4_redaction_on_mortality_Copy3",
+	"properties": {
+		"folder": {
+			"name": "Elsevier Blend/elsevier_20250611"
+		},
+		"content": {
+			"query": "-- ************************************************************************************* --\n-- parameter: [customer].[ext_inc_mortality_6_t] --\n-- parameter: end year, start month, end month                               --\n-- ************************************************************************************* --\n\n-- 1. apply xd rules to mortality data\ndelete from [appl].[elsevier_deid_mortality_t];\ninsert into [appl].[elsevier_deid_mortality_t]\n(\n    [input_token]\n    , [record_id]\n    , [deceased_match_indicator]\n    , [month_of_death]\n    , [verified_or_proof_code]\n    , [deceased_source]\n    , [confidence_score]\n)\nselect \n    a.[input_token]\n    , a.[record_id]\n    , a.[deceased_match_indicator]\n    , case when deceased_match_indicator = 'Y'\n        and ((len(date_of_death) = 4 and cast(date_of_death as integer) between 2000 and 2025)\n            or (len(date_of_death) >= 6 and (cast(substring(date_of_death, 5, 2) as integer) between 1 and 12) and substring(date_of_death, 1, 6) between '200001' and '202504'))\n        and b.token is null then case when len(a.[date_of_death]) >= 6 then substring(a.[date_of_death], 1, 6) else date_of_death end\n    else null\n    end as month_of_death\n    , case when deceased_match_indicator = 'Y'\n        and ((len(date_of_death) = 4 and cast(date_of_death as integer) between 2000 and 2025)\n            or (len(date_of_death) >= 6 and (cast(substring(date_of_death, 5, 2) as integer) between 1 and 12) and substring(date_of_death, 1, 6) between '200001' and '202504'))\n        and b.token is null then a.[verified_or_proof_code]\n    else null\n    end as [verified_or_proof_code]\n    , case when deceased_match_indicator = 'Y'\n        and ((len(date_of_death) = 4 and cast(date_of_death as integer) between 2000 and 2025)\n            or (len(date_of_death) >= 6 and (cast(substring(date_of_death, 5, 2) as integer) between 1 and 12) and substring(date_of_death, 1, 6) between '200001' and '202504'))\n        and b.token is null then a.[deceased_source]\n    else null\n    end as [deceased_source]\n    , case when deceased_match_indicator = 'Y'\n        and ((len(date_of_death) = 4 and cast(date_of_death as integer) between 2000 and 2025)\n            or (len(date_of_death) >= 6 and (cast(substring(date_of_death, 5, 2) as integer) between 1 and 12) and substring(date_of_death, 1, 6) between '200001' and '202504'))\n        and b.token is null then a.[confidence_score]\n    else null\n    end as [confidence_score]\nfrom \n    [customer].[ext_inc_mortality_6_t] a\n    left join [appl].[elsevier_claims_minor_tokens_t] b\n        on a.input_token = b.token\n;\n\n\n-- select case when len(date_of_death) >= 6 then substring(date_of_death, 1, 6) else date_of_death end as month_of_death, count(*) as cnt\n--  FROM [customer].[stg_incr_mortality_t]\n--  group by case when len(date_of_death) >= 6 then substring(date_of_death, 1, 6) else date_of_death end\n--  order by 1\n-- 202201 - 202403\n\n-- select count(*) from [appl].[elsevier_deid_mortality_t];\n-- --3119308\n\t--  3,119,308\n\n-- select count(*) from [customer].[ext_inc_mortality_1_t] a;\n-- 2711811\n-- select count(*) from [customer].[ext_inc_mortality_2_t] a;\n-- 2600108\n-- select count(*) from [customer].[ext_inc_mortality_3_t] a;\n-- 2448782\n-- select count(*) from [customer].[ext_inc_mortality_4_t] a;\n-- 1365432\n-- select count(*) from [customer].[ext_inc_mortality_5_t] a;\n-- 3160083\n-- select count(*) from [customer].[ext_inc_mortality_6_t] a;\n-- 3119308\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

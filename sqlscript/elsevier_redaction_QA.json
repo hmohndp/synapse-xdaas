@@ -1,0 +1,20 @@
+{
+	"name": "elsevier_redaction_QA",
+	"properties": {
+		"folder": {
+			"name": "Elsevier Blend"
+		},
+		"content": {
+			"query": "-- 1. check output file sizes against input files\nselect count(*) from customer.ext_inc_claims_1000006_20240229_20240701_ELS_Cohort_Geo1_t;\n--34,433,716\n--28,858,039\n\n\n-- Mortality part --\nselect count(*) as cnt, sum(case when deceased_match_indicator = 'N' then 1 else 0 end) as cnt_no_match from customer.ext_inc_mortality_LNR101_1000006_LNR101_3622901_ELS_All_2_appended_t;\n--374297   317316\n\nselect month_of_death, count(*)\nfrom appl.elsevier_deid_mortality_t\ngroup by month_of_death\norder by 1;\n-- null 2172275",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

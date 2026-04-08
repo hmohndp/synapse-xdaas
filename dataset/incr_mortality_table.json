@@ -1,0 +1,68 @@
+{
+	"name": "incr_mortality_table",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [
+			{
+				"name": "record_id",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "input_token",
+				"type": "nvarchar"
+			},
+			{
+				"name": "udf_1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "udf_2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "udf_3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deceased_match_indicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "date_of_death",
+				"type": "nvarchar"
+			},
+			{
+				"name": "verified_or_proof_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deceased_source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deceased_county",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deceased_state",
+				"type": "nvarchar"
+			},
+			{
+				"name": "confidence_score",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "customer",
+			"table": "stg_incr_mortality_t"
+		},
+		"sqlPool": {
+			"referenceName": "xdaas_dedicated_sql_pool",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

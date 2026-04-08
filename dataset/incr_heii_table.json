@@ -1,0 +1,17 @@
+{
+	"name": "incr_heii_table",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "customer",
+			"table": "stg_incr_heii_t"
+		},
+		"sqlPool": {
+			"referenceName": "xdaas_dedicated_sql_pool",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

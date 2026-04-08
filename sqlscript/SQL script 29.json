@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 29",
+	"properties": {
+		"content": {
+			"query": "IF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseDelimitedTextFormatINOVALONENROLLMENT') \n\tCREATE EXTERNAL FILE FORMAT [SynapseDelimitedTextFormatINOVALONENROLLMENT] \n\tWITH ( FORMAT_TYPE = DELIMITEDTEXT ,\n\t       FORMAT_OPTIONS (\n\t\t\t FIELD_TERMINATOR = '|',\n\t\t\t FIRST_ROW = 2,\n\t\t\t USE_TYPE_DEFAULT = FALSE\n\t\t\t))\nGO\n\nIF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'lexisnexis_deidstrgeaccdevelopment_dfs_core_windows_net') \n\tCREATE EXTERNAL DATA SOURCE [lexisnexis_deidstrgeaccdevelopment_dfs_core_windows_net] \n\tWITH (\n\t\tLOCATION = 'abfss://lexisnexis@deidstrgeaccdevelopment.dfs.core.windows.net', \n\t\tTYPE = HADOOP \n\t)\nGO\n\nCREATE EXTERNAL TABLE customer.ext_ino_treatment_enrollment_monthly_t (\n\t[memberuid] bigint,\n\t[monthbegindate] date,\n\t[monthenddate] date,\n\t[ageatendyear] bigint,\n\t[gendercode] nvarchar(200),\n\t[statecode] nvarchar(200),\n\t[zip3value] nvarchar(200),\n\t[raceethnicitycode] nvarchar(200),\n\t[payergroupcode] nvarchar(200),\n\t[payertypecode] nvarchar(200),\n\t[productcode] nvarchar(200),\n\t[medicalindicator] bigint,\n\t[rxindicator] bigint,\n\t[macontracttypecode] nvarchar(200),\n\t[groupplantypecode] nvarchar(200),\n\t[acaindicator] bigint,\n\t[acaissuerstatecode] nvarchar(200),\n\t[acagrandfatheredindicator] bigint,\n\t[acaonexchangeindicator] bigint,\n\t[acametallevel] nvarchar(200),\n\t[acaactuarialvalue] bigint,\n\t[sourceid] nvarchar(200),\n\t[createddate] date\n\t)\n\tWITH (\n\tLOCATION = '21537399/Inovalon/Inbound/treatment_consolidated_enrollment_monthly_combined.txt',\n\tDATA_SOURCE = [lexisnexis_deidstrgeaccdevelopment_dfs_core_windows_net],\n\tFILE_FORMAT = [SynapseDelimitedTextFormatINOVALONENROLLMENT]\n\t)\nGO\n\n\nSELECT TOP 1 * FROM customer.ext_ino_treatment_enrollment_monthly_t\nwhere memberuid = 276681457\n\nSELECT TOP 1 * FROM customer.stg_ino_treatment_enrollment_monthly_t\nwhere memberuid = 276681457\n\nselect missing_category, count(*) from\nappl.ino_treatment_tokens_w_missing_quasi_id_t\ngroup by missing_category\n\nselect missing_category, count(*) from\nappl.ino_control_tokens_w_missing_quasi_id_t\ngroup by missing_category",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

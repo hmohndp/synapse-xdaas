@@ -1,0 +1,20 @@
+{
+	"name": "closedclaims_run_log",
+	"properties": {
+		"folder": {
+			"name": "Closed Claims"
+		},
+		"content": {
+			"query": "/***********************************************/\n  1. The test file request for closedclaims: Feb 2025\n/***********************************************/\nInput:\n    customer.ext_stg_closedclaims_claims_t\n    linked to 'closedclaims/2023_closedclaims_claims_append_20241206.csv'\n\nOutput:\n    [appl].[closedclaims_deid_members_t]\n\nApproach: \n    Step 1: load data to an external table\n    Step 2: Redact the external table and save it to a deid table\n    Step 3: Export the deid table via Data Factory pipeline \"export_closedclaims_deid_data\"",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

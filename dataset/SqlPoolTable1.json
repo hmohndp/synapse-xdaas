@@ -1,0 +1,41 @@
+{
+	"name": "SqlPoolTable1",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [
+			{
+				"name": "zip3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "gender",
+				"type": "varchar"
+			},
+			{
+				"name": "age_lower_bound",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "age_upper_bound",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "population",
+				"type": "bigint",
+				"precision": 19
+			}
+		],
+		"typeProperties": {
+			"schema": "dim",
+			"table": "census_population_by_zip3_age_gender_t"
+		},
+		"sqlPool": {
+			"referenceName": "xdaas_dedicated_sql_pool",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

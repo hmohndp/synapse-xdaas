@@ -1,0 +1,20 @@
+{
+	"name": "pji_step_1_load_data_Copy1",
+	"properties": {
+		"folder": {
+			"name": "PJI/PJI_HG_20241203"
+		},
+		"content": {
+			"query": "CREATE EXTERNAL TABLE customer.ext_inc_claims_LNR101_1000006_LNR101_7474901_HGCallers20241125_append_t (\n\t[TOKEN] [nvarchar](200)  NULL,\n\t[CLAIM_NUM] [nvarchar](200)  NULL,\n\t[CLAIM_LINE_NUM] [nvarchar](50)  NULL,\n\t[CLAIM_TYPE] [nvarchar](1)  NULL,\n\t[DOS_BEGIN] [nvarchar](8)  NULL,\n\t[DOS_END] [nvarchar](8)  NULL,\n\t[PRACT_NPI] [nvarchar](10)  NULL,\n\t[SVC_FACILITY_NPI] [nvarchar](10)  NULL,\n\t[PATIENT_GENDER] [nvarchar](1)  NULL,\n\t[PATIENT_AGE] [nvarchar](3)  NULL,\n\t[PATIENT_ZIP_3] [nvarchar](3)  NULL,\n\t[PROCEDURE_SCHEME] [nvarchar](5)  NULL,\n\t[PROCEDURE_CODE] [nvarchar](10)  NULL,\n\t[PROC_MD_1] [nvarchar](2)  NULL,\n\t[PROC_MD_2] [nvarchar](2)  NULL,\n\t[PROC_MD_3] [nvarchar](2)  NULL,\n\t[PROC_MD_4] [nvarchar](2)  NULL,\n\t[DIAG_CD1] [nvarchar](10)  NULL,\n\t[DIAG_CD2] [nvarchar](10)  NULL,\n\t[DIAG_CD3] [nvarchar](10)  NULL,\n\t[DIAG_CD4] [nvarchar](10)  NULL,\n\t[DIAG_CD5] [nvarchar](10)  NULL,\n\t[DIAG_CD6] [nvarchar](10)  NULL,\n\t[DIAG_CD7] [nvarchar](10)  NULL,\n\t[DIAG_CD8] [nvarchar](10)  NULL,\n\t[DIAG_CD9] [nvarchar](10)  NULL,\n\t[DIAG_CD10] [nvarchar](10)  NULL,\n\t[DIAG_CD11] [nvarchar](10)  NULL,\n\t[DIAG_CD12] [nvarchar](10)  NULL,\n\t[DIAG_CD13] [nvarchar](10)  NULL,\n\t[DIAG_CD14] [nvarchar](10)  NULL,\n\t[DIAG_CD15] [nvarchar](10)  NULL,\n\t[DIAG_CD16] [nvarchar](10)  NULL,\n\t[DIAG_CD17] [nvarchar](10)  NULL,\n\t[DIAG_CD18] [nvarchar](10)  NULL,\n\t[DIAG_CD19] [nvarchar](10)  NULL,\n\t[DIAG_CD20] [nvarchar](10)  NULL,\n\t[ICD_VERSION] [nvarchar](2)  NULL,\n\t[DRG_CODE] [nvarchar](10)  NULL,\n\t[NDC_CD] [nvarchar](11)  NULL,\n\t[SETTING_OF_CARE] [nvarchar](4)  NULL,\n\t[UNITS_OF_SERVICE] [nvarchar](5)  NULL,\n\t[LINE_OF_BUSINESS] [nvarchar](12)  NULL,\n\t[835_FLAG] [nvarchar](1)  NULL,\n\t[CHARGE_AMT] [nvarchar](20)  NULL,\n\t[PAID_AMT] [nvarchar](20)  NULL,\n\t[ALLOWED_AMT] [nvarchar](20)  NULL,\n\t[PATIENT_RESP] [nvarchar](20)  NULL\n)\nWITH (\n\tLOCATION = '21474749_Token_Match/PJI/Inbound/LNR101_1000006_LNR101_7474901_HGCallers20241125_append.txt',\n\tDATA_SOURCE = [lexisnexis_deidstrgeaccdevelopment_dfs_core_windows_net],\n\tFILE_FORMAT = [LexisNexisPipeDelimitedFormat]\n)\nGO\n\n\nSELECT TOP 100 * FROM customer.ext_inc_claims_LNR101_1000006_LNR101_7474901_HGCallers20241125_append_t\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

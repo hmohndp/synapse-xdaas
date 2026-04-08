@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 37",
+	"properties": {
+		"content": {
+			"query": "\n\nshow TABLE customer.stg_claims_t\nRENAME COLUMN CLAIM_NUM TO claim_number;\n\nEXEC sp_rename 'customer.stg_claims_t.TOKEN', 'input_token', 'COLUMN';\n\nEXEC sp_rename 'customer.stg_claims_t.patient_zip_3', 'patient_zip3', 'COLUMN';\n\n\ndevelopment_xdaas\n\nselect 1, count(*) from dim.mortality_2020_yearly_raw_t union all\nselect 2, count(*) from dim.mortality_2022_monthly_10yr_raw_t union all\nselect 3, count(*) from dim.mortality_2022_yearly_5yr_raw_t union all\nselect 4, count(*) from dim.mortality_2023_monthly_10yr_raw_t union all\nselect 5, count(*) from dim.mortality_2023_yearly_5yr_raw_t union all\nselect 6, count(*) from dim.mortality_pr_2022_weekly_raw_t union all\nselect 7, count(*) from dim.census_population_by_zip3_age_gender_distributed_t union all\nselect 8, count(*) from dim.mortality_2023_rate_t\norder by 1;\n\now\t\nf0_\nf1_\n1\t\n1\n48223\n2\t\n2\n71680\n3\t\n3\n48283\n4\t\n4\n67502\n5\t\n5\n38077\n6\t\n6\n281\n7\t\n7\n162708\n\n32184",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

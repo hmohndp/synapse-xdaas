@@ -1,0 +1,172 @@
+{
+	"name": "load mortality",
+	"properties": {
+		"activities": [
+			{
+				"name": "load mortality",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "1.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlPoolSink",
+						"writeBehavior": "Insert"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 4,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Record_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "record_id",
+									"type": "Int64",
+									"physicalType": "bigint"
+								}
+							},
+							{
+								"source": {
+									"name": "Input_Token",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "input_token",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Deceased_Match_Indicator",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "deceased_match_indicator",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Date_of_Death",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "date_of_death",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Verified_or_Proof_Code",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "verified_or_proof_code",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Deceased_Source",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "deceased_source",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Deceased_County",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "deceased_county",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Deceased_State",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "deceased_state",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Confidence_Score",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "confidence_score",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "incr_mortality_data",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "incr_mortality_table",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-05-07T03:09:18Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

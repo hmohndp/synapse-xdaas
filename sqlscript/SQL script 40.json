@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 40",
+	"properties": {
+		"content": {
+			"query": "SET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\n\nCREATE TABLE [customer].[stg_mortality1_t]\n( \n\t[record_id] [nvarchar](200)  NULL,\n\t[input_token] [nvarchar](200)  NULL,\n\t[UDF1] [nvarchar](200)  NULL,\n\t[UDF2] [nvarchar](200)  NULL,\n\t[UDF3] [nvarchar](200)  NULL,\n\t[deceased_match_indicator] [nvarchar](1)  NULL,\n\t[date_of_death] [nvarchar](20)  NULL,\n\t[verified_or_proof_code] [nvarchar](10)  NULL,\n\t[deceased_source] [nvarchar](10)  NULL,\n\t[deceased_county] [nvarchar](50)  NULL,\n\t[deceased_state] [nvarchar](2)  NULL,\n\t[confidence_score] [nvarchar](5)  NULL\n)\nWITH\n(\n\tDISTRIBUTION = ROUND_ROBIN,\n\tCLUSTERED COLUMNSTORE INDEX\n)\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

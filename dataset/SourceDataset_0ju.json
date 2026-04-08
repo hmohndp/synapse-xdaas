@@ -1,0 +1,61 @@
+{
+	"name": "SourceDataset_0ju",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "xdaas-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "bigquery",
+				"fileSystem": "lexisnexis"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": ""
+		},
+		"schema": [
+			{
+				"name": "overall_score",
+				"type": "String"
+			},
+			{
+				"name": "num_features",
+				"type": "String"
+			},
+			{
+				"name": "num_features_score",
+				"type": "String"
+			},
+			{
+				"name": "utility",
+				"type": "String"
+			},
+			{
+				"name": "utility_score",
+				"type": "String"
+			},
+			{
+				"name": "suppr_count",
+				"type": "String"
+			},
+			{
+				"name": "suppr_ratio",
+				"type": "String"
+			},
+			{
+				"name": "columns",
+				"type": "String"
+			},
+			{
+				"name": "id",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

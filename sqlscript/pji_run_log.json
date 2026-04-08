@@ -1,0 +1,20 @@
+{
+	"name": "pji_run_log",
+	"properties": {
+		"folder": {
+			"name": "PJI"
+		},
+		"content": {
+			"query": "/***********************************************/\n  1. The first request for HG: 12/03/2024\n/***********************************************/\nInput:\n    customer.ext_inc_claims_LNR101_1000006_LNR101_7474901_HGCallers20241125_append_t\n\nOutput:\n    [appl].[pji_deid_claims_t]\n\nApproach: \n    Manual\n\n\n/***********************************************/\n  2. The first request for HG: 01/14/2025\n/***********************************************/\nInput:\n    customer.ext_inc_claims_21474749_t\n    linked to 21474749_Token_Match/PJI/Inbound/LNR101_1000006_LNR101_7474901_HGCallersAndRelatives20241223_append.txt\n\nOutput:\n    [appl].[pji_deid_claims_t]\n\nApproach: \n    Step 1: load data to an external table\n    Step 2: Redact the external table and save it to a deid table\n    Step 3: Export the deid table via Data Factory pipeline \"export_pji_deid_claims\"\n\n\n/***********************************************/\n  3. The first request for HG: 03/05/2025\n/***********************************************/\nInput:\n    customer.ext_inc_claims_21474749_t\n    linked to 21474749_Token_Match/PJI/Inbound/202502270159-2307681_SA1_PJI_21474749_1000006_LNR101_LNR101_7474901_HGCallersAndRelatives20250227_appended_append.1.1.csv\n\nOutput:\n    [appl].[pji_deid_claims_t]\n\nApproach: \n    Step 1: load data to an external table\n    Step 2: Redact the external table and save it to a deid table\n    Step 3: Export the deid table via Data Factory pipeline \"export_pji_deid_claims\"\n\n\n/***********************************************/\n  4. The first request for ABCo: 03/31/2025\n/***********************************************/\nInput:\n    customer.ext_inc_claims_9156974_SS_[1-6]_t\n    linked to '9156974_SS/PJI/Inbound/202503211032-2408231_SA1_PJICC_9056974_1000006_LNR101_ABCO_PJI_Geo[1-6]_append.1.1.csv',\n\nOutput:\n    [appl].[pji_deid_claims_t]\n\nApproach: \n    Step 1: load data to an external table\n    Step 2: Prepare the age correction data \n    Step 3: Redact the external table and save it to a deid table\n    Step 4: Export the deid table via Data Factory pipeline \"export_pji_deid_claims\"\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

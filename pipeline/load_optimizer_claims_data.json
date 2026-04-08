@@ -1,0 +1,148 @@
+{
+	"name": "load_optimizer_claims_data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"writeBehavior": "Insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "dataprime_token",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TOKEN",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "claim_number",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CLAIM_NUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "dos_begin",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DOS_BEGIN",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "dos_end",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DOS_END",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "patient_gender",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PATIENT_GENDER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "patient_age",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PATIENT_AGE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "patient_zip3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PATIENT_ZIP_3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "OptimizerClaimsRawFile",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureOptimizerClaimsStgTable",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-10-23T03:31:19Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

@@ -1,0 +1,4900 @@
+{
+	"name": "load heii",
+	"properties": {
+		"activities": [
+			{
+				"name": "load heii",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlPoolSink",
+						"allowCopyCommand": true,
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 8,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "input_token",
+									"type": "String"
+								},
+								"sink": {
+									"name": "input_token",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "record_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "record_id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccidentAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccidentAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccidentCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccidentCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrChangeCount01",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrChangeCount01",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrChangeCount03",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrChangeCount03",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrChangeCount06",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrChangeCount06",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrChangeCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrChangeCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrChangeCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrChangeCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrStability",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrStability",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LifeEvEconTrajectory",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LifeEvEconTrajectory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LifeEvEconTrajectoryIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LifeEvEconTrajectoryIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LifeEvEverResidedCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LifeEvEverResidedCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LifeEvLastMoveTaxRatioDiff",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LifeEvLastMoveTaxRatioDiff",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StatusMostRecent",
+									"type": "String"
+								},
+								"sink": {
+									"name": "StatusMostRecent",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StatusNextPrevious",
+									"type": "String"
+								},
+								"sink": {
+									"name": "StatusNextPrevious",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StatusPrevious",
+									"type": "String"
+								},
+								"sink": {
+									"name": "StatusPrevious",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AircraftCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AircraftCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AircraftCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AircraftCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AircraftCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AircraftCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AircraftOwner",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AircraftOwner",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AssetOwner",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AssetOwner",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHPPCurrOwnedCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHPPCurrOwnedCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHPPCurrOwnedWtrcrftCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHPPCurrOwnedWtrcrftCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHPropCurrAVMHighest",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHPropCurrAVMHighest",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHPropCurrOwnedCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHPropCurrOwnedCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHPropCurrOwnerMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHPropCurrOwnerMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LifeEvTimeFirstAssetPurchase",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LifeEvTimeFirstAssetPurchase",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LifeEvTimeLastAssetPurchase",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LifeEvTimeLastAssetPurchase",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PPCurrOwnedCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PPCurrOwnedCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PPCurrOwner",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PPCurrOwner",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropAgeNewestPurchase",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropAgeNewestPurchase",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropAgeNewestSale",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropAgeNewestSale",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropAgeOldestPurchase",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropAgeOldestPurchase",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropCurrOwnedAVMTtl",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropCurrOwnedAVMTtl",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropertyOwner",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropertyOwner",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropEverOwnedCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropEverOwnedCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropNewestSalePrice",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropNewestSalePrice",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropNewestSalePurchaseIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropNewestSalePurchaseIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropOwnedCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropOwnedCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropOwnedHistoricalCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropOwnedHistoricalCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropOwnedTaxTotal",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropOwnedTaxTotal",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropOwnedTaxTotal_12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropOwnedTaxTotal_12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropOwnedTaxTotal_24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropOwnedTaxTotal_24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropPurchasedCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropPurchasedCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropPurchasedCount24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropPurchasedCount24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropPurchasedCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropPurchasedCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropSoldCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropSoldCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PropSoldCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropSoldCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAPPCurrOwnerAircrftMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAPPCurrOwnerAircrftMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAPPCurrOwnerMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAPPCurrOwnerMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAPPCurrOwnerWtrcrftMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAPPCurrOwnerWtrcrftMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAPropCurrOwnerMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAPropCurrOwnerMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAPropOwnerAVMHighest",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAPropOwnerAVMHighest",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAPropOwnerAVMMed",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAPropOwnerAVMMed",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RelativesPropOwnedCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RelativesPropOwnedCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RelativesPropOwnedTaxTotal",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RelativesPropOwnedTaxTotal",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WatercraftCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WatercraftCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WatercraftCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WatercraftCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WatercraftCount24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WatercraftCount24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WatercraftCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WatercraftCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WatercraftOwner",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WatercraftOwner",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WealthIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WealthIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrAgeLastSale",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrAgeLastSale",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrAgeNewestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrAgeNewestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrAgeOldestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrAgeOldestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrApplicantOwned",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrApplicantOwned",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrAVMValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrAVMValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrAVMValue12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrAVMValue12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrAVMValue60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrAVMValue60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrBlockIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrBlockIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrBurglaryIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrBurglaryIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrBurglaryIndex_12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrBurglaryIndex_12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrBurglaryIndex_24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrBurglaryIndex_24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrCarTheftIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrCarTheftIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrCountyIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrCountyIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrCrimeIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrCrimeIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrDwellType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrDwellType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrFamilyOwned",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrFamilyOwned",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrLastSalesPrice",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrLastSalesPrice",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrLenOfRes",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrLenOfRes",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrMedianIncome",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrMedianIncome",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrMedianValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrMedianValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrMortgageType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrMortgageType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrMurderIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrMurderIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrOccupantOwned",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrOccupantOwned",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrTaxMarketValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrTaxMarketValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrTaxValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrTaxValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrTaxYr",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrTaxYr",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrTractIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrTractIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResCurrAVMRatioDiff12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResCurrAVMRatioDiff12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResCurrAVMRatioDiff60Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResCurrAVMRatioDiff60Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResCurrBusinessCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResCurrBusinessCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResCurrMortgageAmount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResCurrMortgageAmount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResCurrOwnershipIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResCurrOwnershipIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Age_in_Years",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Age_in_Years",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Female",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Female",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHElderlyMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHElderlyMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHMiddleAgemmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHMiddleAgemmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHSeniorMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHSeniorMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHTeenagerMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHTeenagerMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHYoungAdultMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHYoungAdultMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProspectMaritalStatus",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProspectMaritalStatus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAElderlyMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAElderlyMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAHHCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAHHCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAMiddleAgeMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAMiddleAgeMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaASeniorMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaASeniorMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaATeenageMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaATeenageMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAYoungAdultMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAYoungAdultMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RelativesCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RelativesCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RelativesDistanceClosest",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RelativesDistanceClosest",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ST",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ST",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CrtRecCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CrtRecCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CrtRecSeverityIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CrtRecSeverityIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DerogAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DerogAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DerogCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DerogCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DerogRecentCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DerogRecentCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DerogSeverityIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DerogSeverityIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ArrestAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ArrestAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ArrestCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ArrestCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ArrestCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ArrestCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ArrestCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ArrestCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CrtRecMsdmeanCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CrtRecMsdmeanCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CrtRecMsdmeanCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CrtRecMsdmeanCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CrtRecMsdmeanTimeNewest",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CrtRecMsdmeanTimeNewest",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FelonyAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FelonyAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FelonyCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FelonyCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FelonyCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FelonyCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FelonyCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FelonyCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecFelonyMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecFelonyMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecFelonyMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecFelonyMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecMsdmeanMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecMsdmeanMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecMsdmeanMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecMsdmeanMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HistoricalAddrCorrectional",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HistoricalAddrCorrectional",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecFelonyMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecFelonyMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecFelonyMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecFelonyMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecMsdmeanMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecMsdmeanMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecMsdmeanMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecMsdmeanMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RelativesFelonyCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RelativesFelonyCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BankruptcyAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BankruptcyAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BankruptcyCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BankruptcyCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BankruptcyCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BankruptcyCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BankruptcyCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BankruptcyCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BankruptcyStatus",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BankruptcyStatus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BankruptcyType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BankruptcyType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CrtRecLienJudgTimeNewest",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CrtRecLienJudgTimeNewest",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EvictionAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EvictionAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EvictionCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EvictionCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EvictionCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EvictionCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EvictionCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EvictionCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecBkrptMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecBkrptMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecBkrptMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecBkrptMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecBkrptMmbrCnt24Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecBkrptMmbrCnt24Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecEvictionMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecEvictionMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecEvictionMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecEvictionMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecLienJudgAmtTtl",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecLienJudgAmtTtl",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecLienJudgMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecLienJudgMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCrtRecLienJudgMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCrtRecLienJudgMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienFiledAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienFiledAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienFiledCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienFiledCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienFiledCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienFiledCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienFiledCount24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienFiledCount24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienFiledCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienFiledCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienFiledTotal",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienFiledTotal",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienReleasedAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienReleasedAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienReleasedCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienReleasedCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienReleasedCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienReleasedCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienReleasedCount24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienReleasedCount24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienReleasedCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienReleasedCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LienReleasedTotal",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LienReleasedTotal",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecBkrptMmbrCnt36Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecBkrptMmbrCnt36Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecEvictionMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecEvictionMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecEvictionMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecEvictionMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecLienJudgAmtMax",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecLienJudgAmtMax",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecLienJudgMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecLienJudgMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACrtRecLienJudgMmbrCnt12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACrtRecLienJudgMmbrCnt12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RelativesBankruptcyCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RelativesBankruptcyCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EducationAttendedCollege",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EducationAttendedCollege",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EducationFieldofStudyType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EducationFieldofStudyType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EducationInstitutionPrivate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EducationInstitutionPrivate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EducationInstitutionRating",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EducationInstitutionRating",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EducationProgram2Yr",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EducationProgram2Yr",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EducationProgram4Yr",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EducationProgram4Yr",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EducationProgramGraduate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EducationProgramGraduate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCollege2yrAttendedMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCollege2yrAttendedMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCollege4yrAttendedMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCollege4yrAttendedMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCollegeAttendedMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCollegeAttendedMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCollegeGradAttendedMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCollegeGradAttendedMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCollegePrivateMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCollegePrivateMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHCollegeTierMmbrHighest",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHCollegeTierMmbrHighest",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProspectCollegeAttended",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProspectCollegeAttended",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProspectCollegeAttending",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProspectCollegeAttending",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProspectCollegeProgramType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProspectCollegeProgramType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProspectCollegeTier",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProspectCollegeTier",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACollege2yrAttendedMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACollege2yrAttendedMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACollege4yrAttendedMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACollege4yrAttendedMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACollegeAttendedMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACollegeAttendedMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACollegeGradAttendedMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACollegeGradAttendedMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACollegeLowTierMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACollegeLowTierMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACollegeMidTierMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACollegeMidTierMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACollegePrivateMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACollegePrivateMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaACollegeTopTierMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaACollegeTopTierMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AgeNewestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AgeNewestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AgeOldestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AgeOldestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CreditBureauRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CreditBureauRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastNameChangeAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastNameChangeAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastNameChangeCount06",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastNameChangeCount06",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastNameChangeCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastNameChangeCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LastNameChangeCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LastNameChangeCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProspectBankingExperience",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProspectBankingExperience",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecentActivityIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RecentActivityIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecentUpdate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RecentUpdate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AssocCreditBureauOnlyCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AssocCreditBureauOnlyCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AssocCreditBureauOnlyCountMonth",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AssocCreditBureauOnlyCountMonth",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AssocCreditBureauOnlyCountNew",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AssocCreditBureauOnlyCountNew",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AssocHighRiskTopologyCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AssocHighRiskTopologyCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AssocSuspicousIdentitiesCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AssocSuspicousIdentitiesCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AssocRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AssocRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ComponentCharRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ComponentCharRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IdentityRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IdentityRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IDVerRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IDVerRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SearchComponentRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SearchComponentRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SearchVelocityRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SearchVelocityRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SourceRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SourceRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SourceWatchList",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SourceWatchList",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ValidationRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ValidationRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchAddrIdentities",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchAddrIdentities",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchIdentityAddrs",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchIdentityAddrs",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchIdentityPhones",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchIdentityPhones",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchIdentitySSNs",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchIdentitySSNs",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchLocateCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchLocateCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchLocateCount01",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchLocateCount01",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchLocateCount03",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchLocateCount03",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchLocateCount06",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchLocateCount06",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchLocateCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchLocateCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchLocateCount24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchLocateCount24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchOtherCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchOtherCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchOtherCount03",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchOtherCount03",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchOtherCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchOtherCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchPersonalFinanceCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchPersonalFinanceCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchPersonalFinanceCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchPersonalFinanceCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchPersonalFinanceCount24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchPersonalFinanceCount24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchPhoneIdentities",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchPhoneIdentities",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRSearchSSNIdentities",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRSearchSSNIdentities",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SearchAddrSearchCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SearchAddrSearchCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SearchPhoneSearchCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SearchPhoneSearchCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SearchSSNSearchCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SearchSSNSearchCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SearchUnverifiedAddrCountYear",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SearchUnverifiedAddrCountYear",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SearchUnverifiedDOBCountYear",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SearchUnverifiedDOBCountYear",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SearchUnverifiedPhoneCountYear",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SearchUnverifiedPhoneCountYear",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SearchUnverifiedSSNCountYear",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SearchUnverifiedSSNCountYear",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AgeRiskIndicator",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AgeRiskIndicator",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CorrelationRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CorrelationRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OnlineDirectory",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OnlineDirectory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SrcsConfirmIDAddrCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SrcsConfirmIDAddrCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VerificationFailure",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VerificationFailure",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VerifiedAddress",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VerifiedAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VerifiedDOB",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VerifiedDOB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VerifiedName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VerifiedName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubjectAddrCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubjectAddrCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubjectAddrRecentCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubjectAddrRecentCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubjectLastNameCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubjectLastNameCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubjectSSNCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubjectSSNCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubjectSSNRecentCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubjectSSNRecentCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VariationDOBCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VariationDOBCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VariationDOBCountNew",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VariationDOBCountNew",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VariationIdentityCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VariationIdentityCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VariationMSourcesSSNCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VariationMSourcesSSNCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VariationMSourcesSSNUnrelCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VariationMSourcesSSNUnrelCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VariationRiskLevel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VariationRiskLevel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EstimatedAnnualIncome",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EstimatedAnnualIncome",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EstimatedAnnualIncome_12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EstimatedAnnualIncome_12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EstimatedAnnualIncome_24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EstimatedAnnualIncome_24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHEstimatedIncomeRange",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHEstimatedIncomeRange",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProspectEstimatedIncomeRange",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProspectEstimatedIncomeRange",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAMedIncomeRange",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAMedIncomeRange",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessInputAddrCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BusinessInputAddrCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivAddrIdentityCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivAddrIdentityCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivAddrIdentityCountNew",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivAddrIdentityCountNew",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivAddrIdentityMSourceCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivAddrIdentityMSourceCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivAddrSSNCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivAddrSSNCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivAddrSSNCountNew",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivAddrSSNCountNew",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivAddrSSNMSourceCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivAddrSSNMSourceCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivAddrSuspIdentityCountNew",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivAddrSuspIdentityCountNew",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivSearchAddrSuspIdentityCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivSearchAddrSuspIdentityCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IDVerAddressAssocCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IDVerAddressAssocCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrAgeLastSale",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrAgeLastSale",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrAgeNewestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrAgeNewestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrAgeOldestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrAgeOldestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrApplicantOwned",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrApplicantOwned",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrAVMValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrAVMValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrAVMValue12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrAVMValue12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrAVMValue60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrAVMValue60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrBlockIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrBlockIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrBurglaryIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrBurglaryIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrBusinessCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrBusinessCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrCarTheftIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrCarTheftIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrCountyIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrCountyIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrCrimeIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrCrimeIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrDelivery",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrDelivery",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrDwellType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrDwellType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrErrorCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrErrorCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrFamilyOwned",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrFamilyOwned",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrHighRisk",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrHighRisk",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrHistoricalMatch",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrHistoricalMatch",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrLastSalesPrice",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrLastSalesPrice",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrLenOfRes",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrLenOfRes",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrMedianIncome",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrMedianIncome",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrMedianValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrMedianValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrMobilityIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrMobilityIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrMortgageType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrMortgageType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrMultiFamilyCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrMultiFamilyCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrMurderIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrMurderIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrNotPrimaryRes",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrNotPrimaryRes",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrOccupantOwned",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrOccupantOwned",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrProblems",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrProblems",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrSICCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrSICCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrSingleFamilyCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrSingleFamilyCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrTaxMarketValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrTaxMarketValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrTaxValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrTaxValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrTaxYr",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrTaxYr",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrTractIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrTractIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrVacantPropCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrVacantPropCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrValidation",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrValidation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResInputAVMRatioDiff12Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResInputAVMRatioDiff12Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResInputAVMRatioDiff60Mo",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResInputAVMRatioDiff60Mo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResInputBusinessCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResInputBusinessCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResInputMortgageAmount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResInputMortgageAmount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ResInputOwnershipIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResInputOwnershipIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SFDUAddrIdentitiesCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SFDUAddrIdentitiesCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SFDUAddrIdentitiesCount_12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SFDUAddrIdentitiesCount_12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SFDUAddrIdentitiesCount_24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SFDUAddrIdentitiesCount_24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SFDUAddrSSNCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SFDUAddrSSNCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivSSNAddrMSourceCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivSSNAddrMSourceCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivSSNIdentityMSourceCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivSSNIdentityMSourceCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivSSNIdentityMSourceUrelCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivSSNIdentityMSourceUrelCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DivSSNLNameCountNew",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DivSSNLNameCountNew",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IDVerSSNCreditBureauCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IDVerSSNCreditBureauCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IDVerSSNCreditBureauDelete",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IDVerSSNCreditBureauDelete",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSN3Years",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSN3Years",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNAddrCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNAddrCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNAddrRecentCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNAddrRecentCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNAfter5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNAfter5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNFoundOther",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNFoundOther",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNHighIssueAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNHighIssueAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNIdentitiesCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNIdentitiesCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNIdentitiesRecentCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNIdentitiesRecentCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNIssueState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNIssueState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNLastNameCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNLastNameCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNLowIssueAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNLowIssueAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNNonUS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNNonUS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNNotFound",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNNotFound",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNProblems",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNProblems",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SSNRecent",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SSNRecent",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VerifiedSSN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VerifiedSSN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHInterestSportPersonMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHInterestSportPersonMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InterestSportPerson",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InterestSportPerson",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAInterestSportPersonMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAInterestSportPersonMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrMostRecentCrimeDiff",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrMostRecentCrimeDiff",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrMostRecentDistance",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrMostRecentDistance",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrMostRecentIncomeDiff",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrMostRecentIncomeDiff",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrMostRecentMoveAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrMostRecentMoveAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrMostRecentStateDiff",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrMostRecentStateDiff",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrMostRecentTaxDiff",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrMostRecentTaxDiff",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrMostRecentValueDIff",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrMostRecentValueDIff",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrRecentEconTrajectory",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrRecentEconTrajectory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AddrRecentEconTrajectoryIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AddrRecentEconTrajectoryIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NonDerogCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NonDerogCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NonDerogCount06",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NonDerogCount06",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NonDerogCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NonDerogCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NonDerogCount24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NonDerogCount24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NonDerogCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NonDerogCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VoterRegistrationRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VoterRegistrationRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessActiveAssociation",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BusinessActiveAssociation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessAssociationAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BusinessAssociationAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessInactiveAssociation",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BusinessInactiveAssociation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHOccBusinessAssocMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHOccBusinessAssocMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHOccProfLicMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHOccProfLicMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OccBusinessAssociation",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OccBusinessAssociation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OccBusinessAssociationTime",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OccBusinessAssociationTime",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OccBusinessTitleLeadership",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OccBusinessTitleLeadership",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OccProfLicense",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OccProfLicense",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OccProfLicenseCategory",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OccProfLicenseCategory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfLicAge",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfLicAge",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfLicCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfLicCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfLicCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfLicCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfLicCount60",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfLicCount60",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfLicExpired",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfLicExpired",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfLicTypeCategory",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProfLicTypeCategory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAOccBusinessAssocMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAOccBusinessAssocMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAOccProfLicMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAOccProfLicMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrAddrActivePhoneList",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrAddrActivePhoneList",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrActivePhoneList",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrActivePhoneList",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrPhoneCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrPhoneCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAddrPhoneRecentCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAddrPhoneRecentCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputAreaCodeChange",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputAreaCodeChange",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputPhoneHighRisk",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputPhoneHighRisk",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputPhoneMobile",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputPhoneMobile",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputPhoneProblems",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputPhoneProblems",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputPhoneServiceType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputPhoneServiceType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "InputPhoneType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "InputPhoneType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneEDAAgeNewestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PhoneEDAAgeNewestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneEDAAgeOldestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PhoneEDAAgeOldestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneIdentitiesCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PhoneIdentitiesCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneIdentitiesRecentCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PhoneIdentitiesRecentCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneOther",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PhoneOther",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneOtherAgeNewestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PhoneOtherAgeNewestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PhoneOtherAgeOldestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PhoneOtherAgeOldestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubjectPhoneCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubjectPhoneCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubjectPhoneRecentCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubjectPhoneRecentCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VerifiedPhone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VerifiedPhone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrAgeLastSale",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrAgeLastSale",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrAgeNewestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrAgeNewestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrAgeOldestRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrAgeOldestRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrApplicantOwned",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrApplicantOwned",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrAVMValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrAVMValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrBlockIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrBlockIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrBurglaryIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrBurglaryIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrCarTheftIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrCarTheftIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrCountyIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrCountyIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrCrimeIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrCrimeIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrDwellType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrDwellType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrFamilyOwned",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrFamilyOwned",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrLastSalesPrice",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrLastSalesPrice",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrLenOfRes",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrLenOfRes",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrMedianIncome",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrMedianIncome",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrMedianValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrMedianValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrMurderIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrMurderIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrOccupantOwned",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrOccupantOwned",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrTaxMarketValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrTaxMarketValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrTaxValue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrTaxValue",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrTaxYr",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrTaxYr",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PrevAddrTractIndex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PrevAddrTractIndex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubPrimeOfferRequestCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubPrimeOfferRequestCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubPrimeOfferRequestCount12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubPrimeOfferRequestCount12",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SubPrimeOfferRequestCount24",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubPrimeOfferRequestCount24",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHPPCurrOwnedAutoCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHPPCurrOwnedAutoCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HHPPCurrOwnedMtrcycleCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HHPPCurrOwnedMtrcycleCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PPCurrOwnedAutoCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PPCurrOwnedAutoCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PPCurrOwnedMtrcycleCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PPCurrOwnedMtrcycleCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAPPCurrOwnerAutoMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAPPCurrOwnerAutoMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RaAPPCurrOwnerMtrcycleMmbrCnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RaAPPCurrOwnerMtrcycleMmbrCnt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Urban",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Urban",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LILATracts_1And10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LILATracts_1And10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LILATracts_halfAnd10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LILATracts_halfAnd10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LILATracts_1And20",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LILATracts_1And20",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LILATracts_Vehicle",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LILATracts_Vehicle",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LA1and10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LA1and10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LAhalfand10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LAhalfand10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LA1and20",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LA1and20",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LATracts_half",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LATracts_half",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LATracts1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LATracts1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LATracts10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LATracts10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LATracts20",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LATracts20",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LASNAP1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LASNAP1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LASNAP1share",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LASNAP1share",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LAPop10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LAPop10",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LAPop10share",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LAPop10share",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TractSNAP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TractSNAP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Access_GeneralHospital",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Access_GeneralHospital",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Access_OBGYN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Access_OBGYN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Access_PCP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Access_PCP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Access_Pharmacy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Access_Pharmacy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Access_OverallHealthcare",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Access_OverallHealthcare",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Probability_Asian",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Probability_Asian",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Probability_Black",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Probability_Black",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Probability_Hispanic",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Probability_Hispanic",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Probability_White",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Probability_White",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Probability_Other",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Probability_Other",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "City",
+									"type": "String"
+								},
+								"sink": {
+									"name": "City",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "String"
+								},
+								"sink": {
+									"name": "State",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Zip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Zip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Gender",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Gender",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Census_Tract_Block_Group",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Census_Tract_Block_Group",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FIPS_State_County",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FIPS_State_County",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "County_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "County_Name",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "incr_heii_data",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "incr_heii_table",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-05-07T03:31:31Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

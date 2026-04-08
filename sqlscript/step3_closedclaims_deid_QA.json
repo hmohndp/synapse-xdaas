@@ -1,0 +1,20 @@
+{
+	"name": "step3_closedclaims_deid_QA",
+	"properties": {
+		"folder": {
+			"name": "Closed Claims"
+		},
+		"content": {
+			"query": "-- QA\nselect count(*), count(distinct token) from [appl].[closedclaims_deid_members_t];\n-- 500000 83851\n\nselect ageatendyear, count(*) from [appl].[closedclaims_deid_members_t]\ngroup by ageatendyear\norder by 1;\n\nselect gendercode, count(*) from [appl].[closedclaims_deid_members_t]\ngroup by gendercode\norder by 1;\n\nselect zip3value, count(*) \nfrom [appl].[closedclaims_deid_members_t] c\n    inner join [dim].[zip3_pop_lt_20k_t] z1\n        on c.[zip3value] = z1.zip3_from\ngroup by zip3value;\n\nselect zip3value, count(*) \nfrom [appl].[closedclaims_deid_members_t] c\ngroup by zip3value\norder by 1;\n\nselect case when zip3value in ('', '000') or zip3value is null then zip3value else 'valid' end zip3, count(*) \nfrom [appl].[closedclaims_deid_members_t] c\ngroup by case when zip3value in ('', '000') or zip3value is null then zip3value else 'valid' end;\n\nselect \n    c.token, c.gendercode, c.raceethnicitycode, count(distinct c.zip3value) as cnt_zip3values\nfrom \n    [appl].[closedclaims_deid_members_t] c\ngroup by\n    c.token, c.gendercode, c.raceethnicitycode\nhaving count(distinct c.zip3value) > 1;\n\nselect [raceethnicitycode], count(*) from [appl].[closedclaims_deid_members_t]\ngroup by raceethnicitycode\norder by 1;\n\nselect distinct [billingprovidertaxonomycode]\n    ,[billingtaxonomyclassification]\n    ,[renderingprovidertaxonomycode]\n    ,[renderingtaxonomyclassification]\n    ,[prescribingprovidertaxonomycode]\n    ,[prescribingtaxonomyclassification]\nFROM [appl].[closedclaims_deid_claims_t]\nwhere billingprovidertaxonomycode in ('208000000X', '261QA1903X', '261QP2300X');\n\n\nselect distinct  c.[billingprovidertaxonomycode], pt.recode,\n\tc.billingtaxonomyclassification, pt.recode_classification\nfrom [appl].[closedclaims_deid_claims_t] c\n    inner join [dim].[provider_taxonomy_t] pt\n        on c.[billingprovidertaxonomycode] = pt.code\nwhere pt.recode in ('208000000X', '261QA1903X', '261QP2300X');\n\nselect distinct [code]\n    ,[recode]\n    ,[recode_classification]\nfrom [dim].[provider_taxonomy_t]\nwhere trim(recode) in ('208000000X', '261QA1903X', '261QP2300X');\n\n\nselect count(*), count(distinct token) from [appl].[closedclaims_deid_claims_t];\n-- 7488931 83851\n\t-- 7,488,931",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

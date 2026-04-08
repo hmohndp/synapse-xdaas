@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 31",
+	"properties": {
+		"content": {
+			"query": "\n-- apply xd rules to labclaim\n-- drop table [appl].[deid_ino_control_labclaim_t];\n-- alter schema appl transfer customer.stg_ino_control_labclaim_t;\n-- rename object appl.stg_ino_control_labclaim_t to deid_ino_control_labclaim_t;\n\n-- drop table [appl].[deid_ino_treatment_labclaim_t];\n-- alter schema appl transfer customer.stg_ino_treatment_labclaim_t;\n-- rename object appl.stg_ino_treatment_labclaim_t to deid_ino_treatment_labclaim_t;\n\n\n--redact hcpcs procedure codes\nupdate c\nset c.[hcpcscode] = ''\nfrom [appl].[deid_ino_control_labclaim_t] c\n    inner join \n    (\n        select code from [dim].[hcpcs_2024_sensitive_codes_t] \n        union \n        select code from [dim].[cpt_sensitive_codes_t]\n    ) h\n        on c.[hcpcscode] = h.code;\nGO\n\n--redact LOINC codes\nupdate c\nset c.[loinccode] = ''\nfrom [appl].[deid_ino_control_labclaim_t] c\n    inner join [dim].[loinc_code_t] l\n        on c.[loinccode] = l.code;\nGO\n\n--redact hcpcs procedure codes\nupdate c\nset c.[hcpcscode] = ''\nfrom [appl].[deid_ino_treatment_labclaim_t] c\n    inner join \n    (\n        select code from [dim].[hcpcs_2024_sensitive_codes_t] \n        union \n        select code from [dim].[cpt_sensitive_codes_t]\n    ) h\n        on c.[hcpcscode] = h.code;\nGO\n\n--redact LOINC codes\nupdate c\nset c.[loinccode] = ''\nfrom [appl].[deid_ino_treatment_labclaim_t] c\n    inner join [dim].[loinc_code_t] l\n        on c.[loinccode] = l.code;\nGO\n\n-- apply xd rules to provider\n-- drop table [appl].[deid_ino_control_provider_t];\n-- alter schema appl transfer customer.stg_ino_control_provider_t;\n-- rename object appl.stg_ino_control_provider_t to deid_ino_control_provider_t;\n\n-- drop table [appl].[deid_ino_treatment_provider_t];\n-- alter schema appl transfer customer.stg_ino_treatment_provider_t;\n-- rename object appl.stg_ino_treatment_provider_t to deid_ino_treatment_provider_t;\n\n--redact provider taxonomy\nupdate c\nset c.[taxonomycode] = pt.recode,\n\tc.taxonomytype = pt.recode_type,\n\tc.taxonomyclassification = pt.recode_classification,\n\tc.taxonomyspecialization = pt.recode_specialization\nfrom [appl].[deid_ino_control_provider_t] c\n    inner join [dim].[provider_taxonomy_t] pt\n        on c.[taxonomycode] = pt.code;\nGO\n\n--redact provider taxonomy\nupdate c\nset c.[taxonomycode] = pt.recode,\n\tc.taxonomytype = pt.recode_type,\n\tc.taxonomyclassification = pt.recode_classification,\n\tc.taxonomyspecialization = pt.recode_specialization\nfrom [appl].[deid_ino_treatment_provider_t] c\n    inner join [dim].[provider_taxonomy_t] pt\n        on c.[taxonomycode] = pt.code;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

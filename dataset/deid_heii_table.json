@@ -1,0 +1,586 @@
+{
+	"name": "deid_heii_table",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [
+			{
+				"name": "input_token",
+				"type": "nvarchar"
+			},
+			{
+				"name": "record_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddrChangeCount01",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddrChangeCount03",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddrChangeCount06",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddrChangeCount12",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddrChangeCount60",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AddrStability",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LifeEvEverResidedCnt",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HHPropCurrAVMHighest",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PropCurrOwnedAVMTtl",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RaAPropOwnerAVMHighest",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RaAPropOwnerAVMMed",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WealthIndex",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CurrAddrAVMValue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CurrAddrLenOfRes",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EducationFieldofStudyType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AgeNewestRecord",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CreditBureauRecord",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProspectBankingExperience",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RecentActivityIndex",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RecentUpdate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AssocCreditBureauOnlyCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AssocCreditBureauOnlyCountMonth",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AssocCreditBureauOnlyCountNew",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AssocHighRiskTopologyCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AssocSuspicousIdentitiesCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AssocRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ComponentCharRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IdentityRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IDVerRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SearchComponentRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SearchVelocityRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SourceRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SourceWatchList",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ValidationRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchAddrIdentities",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchIdentityAddrs",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchIdentityPhones",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchIdentitySSNs",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchLocateCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchLocateCount01",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchLocateCount03",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchLocateCount06",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchLocateCount12",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchLocateCount24",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchOtherCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchOtherCount03",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchOtherCount12",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchPersonalFinanceCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchPersonalFinanceCount12",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchPersonalFinanceCount24",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchPhoneIdentities",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRSearchSSNIdentities",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SearchAddrSearchCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SearchPhoneSearchCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SearchSSNSearchCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SearchUnverifiedAddrCountYear",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SearchUnverifiedDOBCountYear",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SearchUnverifiedPhoneCountYear",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SearchUnverifiedSSNCountYear",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CorrelationRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SrcsConfirmIDAddrCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VerificationFailure",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VerifiedAddress",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VerifiedDOB",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VerifiedName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubjectAddrCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubjectAddrRecentCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubjectSSNCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubjectSSNRecentCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VariationDOBCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VariationDOBCountNew",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VariationIdentityCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VariationMSourcesSSNCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VariationMSourcesSSNUnrelCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VariationRiskLevel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedAnnualIncome",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedAnnualIncome_12",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedAnnualIncome_24",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HHEstimatedIncomeRange",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProspectEstimatedIncomeRange",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RaAMedIncomeRange",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivAddrIdentityCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivAddrIdentityCountNew",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivAddrIdentityMSourceCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivAddrSSNCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivAddrSSNCountNew",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivAddrSSNMSourceCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivAddrSuspIdentityCountNew",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivSearchAddrSuspIdentityCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrAgeNewestRecord",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrAgeOldestRecord",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrAVMValue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrErrorCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrHistoricalMatch",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrLenOfRes",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrNotPrimaryRes",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrProblems",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrValidation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SFDUAddrSSNCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivSSNAddrMSourceCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivSSNIdentityMSourceCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivSSNIdentityMSourceUrelCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DivSSNLNameCountNew",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IDVerSSNCreditBureauCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IDVerSSNCreditBureauDelete",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SSNAddrCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SSNAddrRecentCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SSNIdentitiesCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SSNIdentitiesRecentCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SSNLastNameCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SSNNotFound",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SSNProblems",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VerifiedSSN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BusinessInactiveAssociation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CurrAddrActivePhoneList",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrActivePhoneList",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrPhoneCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputAddrPhoneRecentCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputPhoneHighRisk",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputPhoneMobile",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputPhoneProblems",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputPhoneServiceType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "InputPhoneType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PhoneEDAAgeNewestRecord",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PhoneEDAAgeOldestRecord",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PhoneIdentitiesCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PhoneIdentitiesRecentCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PhoneOther",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PhoneOtherAgeNewestRecord",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PhoneOtherAgeOldestRecord",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubjectPhoneCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubjectPhoneRecentCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VerifiedPhone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrevAddrAgeNewestRecord",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrevAddrAgeOldestRecord",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PrevAddrAVMValue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubPrimeOfferRequestCount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubPrimeOfferRequestCount12",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubPrimeOfferRequestCount24",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "appl",
+			"table": "deid_heii_t"
+		},
+		"sqlPool": {
+			"referenceName": "xdaas_dedicated_sql_pool",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

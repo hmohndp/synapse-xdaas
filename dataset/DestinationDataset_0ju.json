@@ -1,0 +1,16 @@
+{
+	"name": "DestinationDataset_0ju",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "AzureBlobFSFile"
+		},
+		"sqlPool": {
+			"referenceName": "xdaas_dedicated_sql_pool",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

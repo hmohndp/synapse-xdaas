@@ -1,0 +1,19 @@
+{
+	"name": "de_id_development_bigquery",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "GoogleBigQuery",
+		"typeProperties": {
+			"project": "development-de-id",
+			"requestGoogleDriveScope": false,
+			"authenticationType": "UserAuthentication",
+			"clientId": "718660672453-c33c3kg18o0isik4d11lq0ao3scn1b9h.apps.googleusercontent.com",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VANzQwNkVENjItQkM0Qi00Q0IwLUE2RTMtNTQwNzY0NERCRTdCXzRhMDNjODI4LWI3ZmMtNDRkYy05Njk0LTFlMmQ2NjhmYjcxMCINCn0="
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

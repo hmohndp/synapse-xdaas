@@ -1,0 +1,31 @@
+{
+	"name": "OptimizerClaimsRawFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DeIDStorageDev",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "pji_deduped_slim_20240304.csv.gz",
+				"folderPath": "Optimizer_Inbound",
+				"fileSystem": "lexisnexis"
+			},
+			"columnDelimiter": "|",
+			"compressionCodec": "gzip",
+			"escapeChar": "",
+			"firstRowAsHeader": true,
+			"quoteChar": ""
+		},
+		"schema": [
+			{
+				"name": "record_id|input_token|UDF1|UDF2|UDF3|deceased_match_indicator|date_of_death|verified_or_proof_code|deceased_source|deceased_county|deceased_state|confidence_score",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

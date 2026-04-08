@@ -1,0 +1,20 @@
+{
+	"name": "pji_step_2_prep_age_data_OC",
+	"properties": {
+		"folder": {
+			"name": "PJI/PJI_OneCall_20250822"
+		},
+		"content": {
+			"query": "\n-- 1. find patient age by token and dos_begin year from the incremental claims data\ndelete from appl.onecall_inc_claims_age_by_year_t;\ninsert into appl.onecall_inc_claims_age_by_year_t\n(\n\ttoken\n    , dos_year\n    , patient_age\n)\nSELECT distinct \n    a.token\n    , a.dos_year\n    , a.patient_age\nfrom\n    (\n        SELECT distinct token, try_cast(substring(DOS_BEGIN, 1, 4) as integer) as dos_year, try_cast(a.patient_age as integer) as patient_age\n        FROM customer.ext_inc_claims_51706122_t a \n        where a.patient_age is not null\n        and a.patient_age <> ''\n        and try_cast(a.patient_age as integer) is not null\n    ) a\nwhere \n    a.dos_year is not null\n;\ngo\n\n\n-- 2. add new age by year to the existing ones, saved for future reference to correct patient ages\ninsert into appl.onecall_claims_age_by_year_t \n(\n\ttoken\n    , dos_year\n    , patient_age\n)\nselect\n\ts.token\n    , s.dos_year\n    , s.patient_age\nfrom \n    appl.onecall_inc_claims_age_by_year_t as s\nWHERE \n    NOT EXISTS (\n        SELECT token FROM appl.onecall_claims_age_by_year_t a \n        WHERE a.token = s.token AND a.dos_year = s.dos_year and a.patient_age = s.patient_age\n    );\n\n\n-- 3. find the corrected age by token and dos_begin year\ndelete from appl.onecall_claims_corrected_age_t;\ninsert into  appl.onecall_claims_corrected_age_t\n(\n\ttoken\n  , dos_year\n  , min_patient_age\n  , diff_patient_age\n  , cnt_patient_age\n) \nselect token, dos_year\n  , min(case when patient_age > 85 then 85 when patient_age < 1 then 1 else patient_age end) as min_patient_age\n  , max(case when patient_age > 85 then 85 when patient_age < 1 then 1 else patient_age end) - min(case when patient_age > 85 then 85 when patient_age < 1 then 1 else patient_age end) as diff_patient_age\n  , count(distinct case when patient_age > 85 then 85 when patient_age < 1 then 1 else patient_age end) as cnt_patient_age\nfrom \n    appl.onecall_claims_age_by_year_t\ngroup by \n    token, dos_year\nhaving count(distinct case when patient_age > 85 then 85 when patient_age < 1 then 1 else patient_age end) = 2 \n  and max(case when patient_age > 85 then 85 when patient_age < 1 then 1 else patient_age end) - min(case when patient_age > 85 then 85 when patient_age < 1 then 1 else patient_age end) = 1\n;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

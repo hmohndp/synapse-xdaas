@@ -1,0 +1,121 @@
+{
+	"name": "CopyPipeline_6iq",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach_6iq",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.cw_items",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy_6iq",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "development_xdaas.@{item().source.table}"
+								},
+								{
+									"name": "Destination",
+									"value": "lexisnexis/bigquery/@{item().destination.fileName}"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "GoogleBigQuerySource"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"validateDataConsistency": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "SourceDataset_6iq",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_table": "@item().source.table"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestinationDataset_6iq",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_fileName": "@item().destination.fileName"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"cw_items": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"source": {
+							"table": "claims_deceased_w_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_deceased_w_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"table": "claims_w_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_w_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"table": "claims_with_risk_indicator"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_with_risk_indicator.txt"
+						}
+					}
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-12-18T22:19:52Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

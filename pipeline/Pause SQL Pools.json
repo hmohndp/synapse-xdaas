@@ -1,0 +1,296 @@
+{
+	"name": "Pause SQL Pools",
+	"properties": {
+		"activities": [
+			{
+				"name": "CheckState",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Prepare Check Status URL",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Prepare Resume URL",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Prepare Pause URL",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": {
+						"value": "@variables('__varStatusURL')",
+						"type": "Expression"
+					},
+					"connectVia": {
+						"referenceName": "AutoResolveIntegrationRuntime",
+						"type": "IntegrationRuntimeReference"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
+					}
+				}
+			},
+			{
+				"name": "Prepare Check Status URL",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "__varStatusURL",
+					"value": {
+						"value": "@concat('https://management.azure.com/subscriptions/'\n,pipeline().parameters.SubscriptionID\n,'/resourceGroups/'\n,pipeline().parameters.ResourceGroup\n,'/providers/Microsoft.Synapse/workspaces/'\n,pipeline().parameters.WorkspaceName\n,'/sqlPools/'\n,pipeline().parameters.SQLPoolName\n,'/?api-version=2021-06-01')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Prepare Resume URL",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "__varResumeURL",
+					"value": {
+						"value": "@concat('https://management.azure.com/subscriptions/'\n,pipeline().parameters.SubscriptionID\n,'/resourceGroups/'\n,pipeline().parameters.ResourceGroup\n,'/providers/Microsoft.Synapse/workspaces/'\n,pipeline().parameters.WorkspaceName\n,'/sqlPools/'\n,pipeline().parameters.SQLPoolName\n,'/resume?api-version=2021-06-01')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Prepare Pause URL",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "__varPauseURL",
+					"value": {
+						"value": "@concat('https://management.azure.com/subscriptions/'\n,pipeline().parameters.SubscriptionID\n,'/resourceGroups/'\n,pipeline().parameters.ResourceGroup\n,'/providers/Microsoft.Synapse/workspaces/'\n,pipeline().parameters.WorkspaceName\n,'/sqlPools/'\n,pipeline().parameters.SQLPoolName\n,'/pause?api-version=2021-06-01')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Determine which operation to take",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "CheckState",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "__varOperationURL",
+					"value": {
+						"value": "@if(equals(activity('CheckState').output.properties.status,'Online')\n,variables('__varPauseURL')\n,''\n)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Perform Operation",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Determine which operation to take",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": {
+						"value": "@variables('__varOperationURL')",
+						"type": "Expression"
+					},
+					"connectVia": {
+						"referenceName": "AutoResolveIntegrationRuntime",
+						"type": "IntegrationRuntimeReference"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
+					}
+				}
+			},
+			{
+				"name": "Check if operation finished",
+				"type": "Until",
+				"dependsOn": [
+					{
+						"activity": "Perform Operation",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@or(equals(variables('__varStatus'),'Paused')\n,equals(variables('__varStatus'),'Online'))",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Wait",
+							"type": "Wait",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"waitTimeInSeconds": 10
+							}
+						},
+						{
+							"name": "Check Sql Pool Status",
+							"type": "WebActivity",
+							"dependsOn": [
+								{
+									"activity": "Wait",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "GET",
+								"url": {
+									"value": "@variables('__varStatusURL')",
+									"type": "Expression"
+								},
+								"connectVia": {
+									"referenceName": "AutoResolveIntegrationRuntime",
+									"type": "IntegrationRuntimeReference"
+								},
+								"authentication": {
+									"type": "MSI",
+									"resource": "https://management.azure.com/"
+								}
+							}
+						},
+						{
+							"name": "Set Current Status",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Check Sql Pool Status",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "__varStatus",
+								"value": {
+									"value": "@activity('Check Sql Pool Status').output.properties.status",
+									"type": "Expression"
+								}
+							}
+						}
+					],
+					"timeout": "0.12:00:00"
+				}
+			}
+		],
+		"parameters": {
+			"ResourceGroup": {
+				"type": "string",
+				"defaultValue": "de-id-resource-group-development"
+			},
+			"SubscriptionID": {
+				"type": "string",
+				"defaultValue": "4842a928-4c96-4cbb-b0c5-1f90c284e488"
+			},
+			"WorkspaceName": {
+				"type": "string",
+				"defaultValue": "xdaas"
+			},
+			"SQLPoolName": {
+				"type": "string",
+				"defaultValue": "xdaas_dedicated_sql_pool"
+			},
+			"PauseorResume": {
+				"type": "string",
+				"defaultValue": "Pause"
+			}
+		},
+		"variables": {
+			"__varStatusURL": {
+				"type": "String"
+			},
+			"__varResumeURL": {
+				"type": "String"
+			},
+			"__varPauseURL": {
+				"type": "String"
+			},
+			"__varOperationURL": {
+				"type": "String"
+			},
+			"__varStatus": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-01-03T23:03:26Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

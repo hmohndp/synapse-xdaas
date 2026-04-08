@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 36",
+	"properties": {
+		"content": {
+			"query": "\ninsert into appl.hg_deid_claims_t\n(\n    [TOKEN]\n    ,[CLAIM_NUM]\n    ,[CLAIM_LINE_NUM]\n    ,[CLAIM_TYPE]\n    ,[DOS_BEGIN]\n    ,[DOS_END]\n    ,[PRACT_NPI]\n    ,[SVC_FACILITY_NPI]\n    ,[PATIENT_GENDER]\n    ,[PATIENT_AGE]\n    ,[PATIENT_ZIP_3]\n    ,[PROCEDURE_SCHEME]\n    ,[PROCEDURE_CODE]\n    ,[PROC_MD_1]\n    ,[PROC_MD_2]\n    ,[PROC_MD_3]\n    ,[PROC_MD_4] \n    ,[DIAG_CD1]\n    ,[DIAG_CD2]\n    ,[DIAG_CD3]\n    ,[DIAG_CD4]\n    ,[DIAG_CD5]\n    ,[DIAG_CD6]\n    ,[DIAG_CD7]\n    ,[DIAG_CD8]\n    ,[DIAG_CD9]\n    ,[DIAG_CD10]\n    ,[DIAG_CD11]\n    ,[DIAG_CD12]\n    ,[DIAG_CD13]\n    ,[DIAG_CD14]\n    ,[DIAG_CD15]\n    ,[DIAG_CD16]\n    ,[DIAG_CD17]\n    ,[DIAG_CD18]\n    ,[DIAG_CD19]\n    ,[DIAG_CD20]\n    ,[ICD_VERSION]\n    ,[DRG_CODE]\n    ,[NDC_CD]\n    ,[SETTING_OF_CARE]\n    ,[UNITS_OF_SERVICE]\n    ,[LINE_OF_BUSINESS]\n    ,[835_FLAG]\n    ,[CHARGE_AMT]\n    ,[PAID_AMT]\n    ,[ALLOWED_AMT]\n    ,[PATIENT_RESP])\nselect \n    [TOKEN]\n    ,[CLAIM_NUM]\n    ,[CLAIM_LINE_NUM]\n    ,[CLAIM_TYPE]\n    ,[DOS_BEGIN]\n    ,[DOS_END]\n    ,[PRACT_NPI]\n    ,[SVC_FACILITY_NPI]\n    ,[PATIENT_GENDER]\n    ,[PATIENT_AGE]\n    ,[PATIENT_ZIP_3]\n    ,[PROCEDURE_SCHEME]\n    ,[PROCEDURE_CODE]\n    ,[PROC_MD_1]\n    ,[PROC_MD_2]\n    ,[PROC_MD_3]\n    ,[PROC_MD_4] \n    ,[DIAG_CD1]\n    ,[DIAG_CD2]\n    ,[DIAG_CD3]\n    ,[DIAG_CD4]\n    ,[DIAG_CD5]\n    ,[DIAG_CD6]\n    ,[DIAG_CD7]\n    ,[DIAG_CD8]\n    ,[DIAG_CD9]\n    ,[DIAG_CD10]\n    ,[DIAG_CD11]\n    ,[DIAG_CD12]\n    ,[DIAG_CD13]\n    ,[DIAG_CD14]\n    ,[DIAG_CD15]\n    ,[DIAG_CD16]\n    ,[DIAG_CD17]\n    ,[DIAG_CD18]\n    ,[DIAG_CD19]\n    ,[DIAG_CD20]\n    ,[ICD_VERSION]\n    ,[DRG_CODE]\n    ,[NDC_CD]\n    ,[SETTING_OF_CARE]\n    ,[UNITS_OF_SERVICE]\n    ,[LINE_OF_BUSINESS]\n    ,[835_FLAG]\n    ,[CHARGE_AMT]\n    ,[PAID_AMT]\n    ,[ALLOWED_AMT]\n    ,[PATIENT_RESP]\nfrom appl.hg_deid_claims3_t;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "elsevier_create_initial_history_tracking",
+	"properties": {
+		"folder": {
+			"name": "Elsevier Blend/backup"
+		},
+		"content": {
+			"query": "delete from appl.elsevier_claims_age_by_year_t ;\n\ninsert into appl.elsevier_claims_age_by_year_t \n(\n\ttoken\n    , dos_year\n    , patient_age\n)\nSELECT distinct \n    a.token\n    , try_cast(a.dos_year as integer) as dos_year\n    , try_cast(a.patient_age as integer) as patient_age\nfrom\n    (\n        SELECT distinct token, substring(DOS_BEGIN, 1, 4) as dos_year, patient_age\n        FROM [customer].[stg_incr_claims_1_t] a \n        union\n        SELECT distinct token, substring(DOS_BEGIN, 1, 4) as dos_year, patient_age\n        FROM [customer].[stg_incr_claims_2_t] a \n        union\n        SELECT distinct token, substring(DOS_BEGIN, 1, 4) as dos_year, patient_age\n        FROM [customer].[stg_incr_claims_3_t] a \n        union\n        SELECT distinct token, substring(DOS_BEGIN, 1, 4) as dos_year, patient_age\n        FROM [customer].[stg_incr_claims_4_t] a \n    ) a\nwhere \n    a.dos_year is not null\n    and a.dos_year <> ''\n    and try_cast(a.dos_year as integer) is not null\n    and a.patient_age is not null\n    and a.patient_age <> ''\n    and try_cast(a.patient_age as integer) is not null\n;\nselect count(*) from [appl].[elsevier_claims_corrected_age_t]; 62535788  6916304\n\nselect count(*) from [appl].[elsevier_inc_mortality_tokens_t];\n\ninsert into [appl].[elsevier_mortality_tokens_t]\n(input_token)\nselect count(distinct input_token)\nfrom customer.stg_incr_mortality_1_t\nwhere\n    deceased_match_indicator = 'Y'\n    and ((len(date_of_death) = 4 and cast(date_of_death as integer) between 2000 and 2024)\n                or (len(date_of_death) >= 6 and cast(substring(date_of_death, 5, 2) as integer) between 1 and 12) and substring(date_of_death, 1, 6) between '200001' and '202408')\n;\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

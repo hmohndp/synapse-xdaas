@@ -1,0 +1,20 @@
+{
+	"name": "load_inovalon_token",
+	"properties": {
+		"folder": {
+			"name": "Inovalon Blend"
+		},
+		"content": {
+			"query": "drop TABLE customer.stg_ino_control_tokens_t\ngo\n\nCREATE TABLE customer.stg_ino_control_tokens_t\n\t(\n\t [token] nvarchar(200),\n\t [memberuid] nvarchar(50),\n\t [type] bigint\n\t)\nWITH\n\t(\n\tDISTRIBUTION = ROUND_ROBIN,\n\t CLUSTERED COLUMNSTORE INDEX\n\t -- HEAP\n\t)\nGO\n\n--Uncomment the 4 lines below to create a stored procedure for data pipeline orchestration​\n--CREATE PROC bulk_load_stg_ino_control_tokens_t\n--AS\n--BEGIN\nCOPY INTO customer.stg_ino_control_tokens_t\n(token 1, memberuid 2, type 3)\nFROM 'https://deidstrgeaccdevelopment.dfs.core.windows.net/lexisnexis/21537399/Token/Inbound/control_lexisnexis_tokens_combined_final_V3.txt'\nWITH\n(\n\tFILE_TYPE = 'CSV'\n\t,MAXERRORS = 0\n\t,FIELDTERMINATOR = '|'\n\t,FIRSTROW = 2\n\t,ERRORFILE = 'https://deidstrgeaccdevelopment.dfs.core.windows.net/lexisnexis/'\n)\n--END\nGO\n\nCOPY INTO customer.stg_ino_control_tokens_t\n(token 1, memberuid 2, type 3)\nFROM 'https://deidstrgeaccdevelopment.dfs.core.windows.net/lexisnexis/21537399/Token/Inbound/control_lexisnexis_tokens_combined_final_V3_pt2.txt'\nWITH\n(\n\tFILE_TYPE = 'CSV'\n\t,MAXERRORS = 0\n\t,FIELDTERMINATOR = '|'\n\t,FIRSTROW = 2\n\t,ERRORFILE = 'https://deidstrgeaccdevelopment.dfs.core.windows.net/lexisnexis/'\n)\n--END\nGO\n\ndrop TABLE customer.stg_ino_treatment_tokens_t\ngo\n\nCREATE TABLE customer.stg_ino_treatment_tokens_t\n\t(\n\t [token] nvarchar(200),\n\t [memberuid] nvarchar(50),\n\t [type] bigint\n\t)\nWITH\n\t(\n\tDISTRIBUTION = ROUND_ROBIN,\n\t CLUSTERED COLUMNSTORE INDEX\n\t -- HEAP\n\t)\nGO\n\n--Uncomment the 4 lines below to create a stored procedure for data pipeline orchestration​\n--CREATE PROC bulk_load_stg_ino_treatment_tokens_t\n--AS\n--BEGIN\nCOPY INTO customer.stg_ino_treatment_tokens_t\n(token 1, memberuid 2, type 3)\nFROM 'https://deidstrgeaccdevelopment.dfs.core.windows.net/lexisnexis/21537399/Token/Inbound/treatment_lexisnexis_tokens_combined_final_v3.txt'\nWITH\n(\n\tFILE_TYPE = 'CSV'\n\t,MAXERRORS = 0\n\t,FIELDTERMINATOR = '|'\n\t,FIRSTROW = 2\n\t,ERRORFILE = 'https://deidstrgeaccdevelopment.dfs.core.windows.net/lexisnexis/'\n)\n--END\nGO\n\nCOPY INTO customer.stg_ino_treatment_tokens_t\n(token 1, memberuid 2, type 3)\nFROM 'https://deidstrgeaccdevelopment.dfs.core.windows.net/lexisnexis/21537399/Token/Inbound/treatment_lexisnexis_tokens_combined_final_v3_pt2.txt'\nWITH\n(\n\tFILE_TYPE = 'CSV'\n\t,MAXERRORS = 0\n\t,FIELDTERMINATOR = '|'\n\t,FIRSTROW = 2\n\t,ERRORFILE = 'https://deidstrgeaccdevelopment.dfs.core.windows.net/lexisnexis/'\n)\n--END\nGO\n\n\nSELECT count(*) FROM customer.stg_ino_control_tokens_t\nGO\n--562551\n\nSELECT count(*) FROM customer.stg_ino_treatment_tokens_t\nGO\n--180794",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

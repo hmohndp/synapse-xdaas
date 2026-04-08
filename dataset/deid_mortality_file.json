@@ -1,0 +1,25 @@
+{
+	"name": "deid_mortality_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DeIDStorageDev",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "mortality.txt",
+				"folderPath": "21543979/Mortality/Outbound",
+				"fileSystem": "lexisnexis"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

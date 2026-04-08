@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 41",
+	"properties": {
+		"content": {
+			"query": "SET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\n\nCREATE TABLE [customer].[stg_claims_tmp_t]\n( \n\t[TOKEN] [nvarchar](200)  NULL,\n\t[CLAIM_NUM] [nvarchar](200)  NULL,\n\t[DOS_BEGIN] [nvarchar](8)  NULL,\n\t[DOS_END] [nvarchar](8)  NULL,\n\t[PATIENT_GENDER] [nvarchar](1)  NULL,\n\t[PATIENT_AGE] [nvarchar](3)  NULL,\n\t[PATIENT_ZIP_3] [nvarchar](3)  NULL\n)\nWITH\n(\n\tDISTRIBUTION = ROUND_ROBIN,\n\tCLUSTERED COLUMNSTORE INDEX\n)\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

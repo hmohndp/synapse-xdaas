@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 39",
+	"properties": {
+		"content": {
+			"query": "IF NOT EXISTS (SELECT * FROM sys.objects O JOIN sys.schemas S ON O.schema_id = S.schema_id WHERE O.NAME = 'fips_state_county_code_t' AND O.TYPE = 'U' AND S.NAME = 'dim')\n\nCREATE TABLE dim.tmp\n\t(\n\t [STATE] nvarchar(50),\n\t [STATEFP] nvarchar(50),\n\t [COUNTYFP] nvarchar(50),\n\t [COUNTYNS] nvarchar(50),\n\t [COUNTYNAME] nvarchar(100),\n\t [CLASSFP] nvarchar(50),\n\t [FUNCSTAT] nvarchar(50)\n\t)\nWITH\n\t(\n\tDISTRIBUTION = ROUND_ROBIN,\n\t CLUSTERED COLUMNSTORE INDEX\n\t -- HEAP\n\t)\nGO\n\nCOPY INTO dim.tmp\n(STATE 1, STATEFP 2, COUNTYFP 3, COUNTYNS 4, COUNTYNAME 5, CLASSFP 6, FUNCSTAT 7)\nFROM 'https://deidstrgeaccdevelopment.dfs.core.windows.net/lexisnexis/dimension_tables/fips_county_class_code.csv'\nWITH\n(\n\tFILE_TYPE = 'CSV'\n\t,MAXERRORS = 0\n\t,FIELDTERMINATOR = '|'\n\t,FIRSTROW =  1\n\t,ERRORFILE = 'https://deidstrgeaccdevelopment.dfs.core.windows.net/lexisnexis/'\n)\n--END\nGO\n\nCREATE TABLE dim.fips_state_county_code_t\n\t(\n\t [state] nvarchar(50),\n\t [county_name] nvarchar(100),\n\t [fips_state] nvarchar(50),\n\t [fips_state_county] nvarchar(50)\n\t)\nWITH\n\t(\n\tDISTRIBUTION = ROUND_ROBIN,\n\t CLUSTERED COLUMNSTORE INDEX\n\t -- HEAP\n\t)\nGO\n\ninsert into dim.fips_state_county_code_t\nSELECT state, COUNTYNAME, STATEFP, concat(STATEFP, COUNTYFP) FROM dim.tmp;\n\ndrop TABLE dim.tmp;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

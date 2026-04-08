@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 45",
+	"properties": {
+		"content": {
+			"query": " {\n    \"errorCode\": \"2108\",\n    \"message\": \"\\\"{\\\\\\\"error\\\\\\\":{\\\\\\\"code\\\\\\\":\\\\\\\"MethodNotAllowed\\\\\\\",\\\\\\\"message\\\\\\\":\\\\\\\"The HTTP method 'GET' is not supported on the resource 'subscriptions/4842a928-4c96-4cbb-b0c5-1f90c284e488/resourceGroups/synapseworkspace-managedrg-1a8f745c-2830-46f1-b5de-2a980c2ddf3f/providers/Microsoft.Sql/servers/xdaas/databases/xdaas_dedicated_sql_pool/resume'.\\\\\\\"}}\\\"\",\n    \"failureType\": \"UserError\",\n    \"target\": \"CheckState\",\n    \"details\": []\n} ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,160 @@
+{
+	"name": "CopyPipeline_0ju",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_0ju",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "lexisnexis/bigquery/"
+					},
+					{
+						"name": "Destination",
+						"value": ".AzureBlobFSFile"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlPoolSink",
+						"writeBehavior": "Insert",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "overall_score",
+									"type": "String"
+								},
+								"sink": {
+									"name": "overall_score",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "num_features",
+									"type": "String"
+								},
+								"sink": {
+									"name": "num_features",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "num_features_score",
+									"type": "String"
+								},
+								"sink": {
+									"name": "num_features_score",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "utility",
+									"type": "String"
+								},
+								"sink": {
+									"name": "utility",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "utility_score",
+									"type": "String"
+								},
+								"sink": {
+									"name": "utility_score",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "suppr_count",
+									"type": "String"
+								},
+								"sink": {
+									"name": "suppr_count",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "suppr_ratio",
+									"type": "String"
+								},
+								"sink": {
+									"name": "suppr_ratio",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "columns",
+									"type": "String"
+								},
+								"sink": {
+									"name": "columns",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_0ju",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_0ju",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-12-20T16:06:57Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

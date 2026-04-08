@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 38",
+	"properties": {
+		"content": {
+			"query": "select * from [dim].[map_mortality_county_name_t]\n(\n    deceased_state VARCHAR(50) NULL,\n    deceased_county VARCHAR(50) NULL,\n    county_name VARCHAR(50) NOT NULL\n)\nWITH\n(\n\tDISTRIBUTION = ROUND_ROBIN,\n\tCLUSTERED COLUMNSTORE INDEX\n)\nGO\n\n\ninsert into [dim].[map_mortality_county_name_t] values('AK', 'FAIRBANKS N. STAR', 'FAIRBANKS NORTH STAR');\ninsert into [dim].[map_mortality_county_name_t] values('AK', 'PRINCE WALES-HYDER', 'PRINCE OF WALES-HYDER');\ninsert into [dim].[map_mortality_county_name_t] values('AK', 'SOUTH E. FAIRBANKS', 'SOUTHEAST FAIRBANKS');\ninsert into [dim].[map_mortality_county_name_t] values('AK', 'VALDEZ-CORDOVA', 'CHUGACH');\ninsert into [dim].[map_mortality_county_name_t] values('AK', 'WADE HAMPTON', 'KUSILVAK');\ninsert into [dim].[map_mortality_county_name_t] values('DC', 'D.C', 'DISTRICT OF COLUMBIA');\ninsert into [dim].[map_mortality_county_name_t] values('LA', 'LA SALLE', 'LASALLE PARISH');\ninsert into [dim].[map_mortality_county_name_t] values('LA', 'ST. JOHN BAPTIST', 'ST. JOHN THE BAPTIST PARISH');\ninsert into [dim].[map_mortality_county_name_t] values('SD', 'SHANNON', 'OGLALA LAKOTA');\ninsert into [dim].[map_mortality_county_name_t] values('VA', 'FREDERICKSBURG CTY', 'FREDERICKSBURG CITY');",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

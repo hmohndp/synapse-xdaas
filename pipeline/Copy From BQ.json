@@ -1,0 +1,116 @@
+{
+	"name": "Copy From BQ",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach_ty2",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.cw_items",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy_ty2",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "@{item().source.dataset}.@{item().source.table}"
+								},
+								{
+									"name": "Destination",
+									"value": "lexisnexis/bigquery/@{item().destination.fileName}"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "GoogleBigQuerySource"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"validateDataConsistency": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "SourceDataset_ty2",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_dataset": "@item().source.dataset",
+										"cw_table": "@item().source.table"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestinationDataset_ty2",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_fileName": "@item().destination.fileName"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"cw_items": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"source": {
+							"dataset": "customer",
+							"table": "stg_claims_t"
+						},
+						"destination": {
+							"fileName": "stg_claims_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "customer",
+							"table": "stg_mortality_t"
+						},
+						"destination": {
+							"fileName": "stg_mortality_t.txt"
+						}
+					}
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-10-21T17:02:53Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

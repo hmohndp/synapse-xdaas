@@ -1,0 +1,31 @@
+{
+	"name": "SourceDataset_ty2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "de_id_development_bigquery",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_dataset": {
+				"type": "String"
+			},
+			"cw_table": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "GoogleBigQueryObject",
+		"schema": [],
+		"typeProperties": {
+			"dataset": {
+				"value": "@dataset().cw_dataset",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().cw_table",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

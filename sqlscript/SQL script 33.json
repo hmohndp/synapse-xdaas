@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 33",
+	"properties": {
+		"content": {
+			"query": "select *\nfrom appl.elsevier_claims_age_by_year_t\nwhere patient_age is null\n\nselect count(*)\nfrom appl.elsevier_claims_age_by_year_t\n--62535788\n\n\nselect count(*)\nfrom appl.elsevier_inc_claims_age_by_year_t\n--11442232\n\nselect count(*) from [appl].[elsevier_inc_mortality_tokens_t];\n--71252 \n\nselect count(*) from [appl].[elsevier_mortality_tokens_t]\n--544159\n--605092\n\n\nselect count(*) from [appl].[elsevier_deid_mortality_t];\n--2182345\n\nselect count(distinct input_token) from [appl].[elsevier_deid_claims_diff_etl_t];\n--2182345\n\nselect count(*) from [customer].[ext_inc_mortality_1000006_20240229_20240701_ELS_Cohort_Geo1_t] a;\n\nselect a.*\nfrom [appl].[elsevier_deid_claims_diff_etl_t] a\ninner join [appl].[elsevier_inc_mortality_tokens_t] b\n    on a.input_token = b.input_token;\n\n\n\nselect count(*) from [customer].[stg_incr_mortality_1_t];\n--23108348\n\nselect count(*) from [appl].[deid_mortality_t];\n\n\nselect case when month_of_death is null then 'Y' else 'N' end as null_dod, count(*) from [appl].[deid_mortality_t]\ngroup by case when month_of_death is null then 'Y' else 'N' end;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

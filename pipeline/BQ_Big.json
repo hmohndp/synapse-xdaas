@@ -1,0 +1,620 @@
+{
+	"name": "BQ_Big",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach_6wm",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.cw_items",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy_6wm",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "@{item().source.dataset}.@{item().source.table}"
+								},
+								{
+									"name": "Destination",
+									"value": "lexisnexis/bigquery/@{item().destination.fileName}"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "GoogleBigQuerySource"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"validateDataConsistency": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "SourceDataset_6wm",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_dataset": "@item().source.dataset",
+										"cw_table": "@item().source.table"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestinationDataset_6wm",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_fileName": "@item().destination.fileName"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"cw_items": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"source": {
+							"dataset": "customer",
+							"table": "claims_deid_t"
+						},
+						"destination": {
+							"fileName": "customerclaims_deid_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "customer",
+							"table": "deceased_deid_t"
+						},
+						"destination": {
+							"fileName": "customerdeceased_deid_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "customer",
+							"table": "inc_claims_deid_t"
+						},
+						"destination": {
+							"fileName": "customerinc_claims_deid_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "customer",
+							"table": "service_line_t"
+						},
+						"destination": {
+							"fileName": "customerservice_line_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "cdc_deceased_by_county_dow_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaascdc_deceased_by_county_dow_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_deceased_feature_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_deceased_feature_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_deceased_feature_weight_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_deceased_feature_weight_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_deceased_solution"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_deceased_solution.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_deceased_suppression_grid_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_deceased_suppression_grid_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_deceased_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_deceased_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_deceased_w_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_deceased_w_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_feature_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_feature_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_feature_weight_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_feature_weight_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_JJ"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_JJ.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_population_not_in_census_v"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_population_not_in_census_v.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_ref_population_by_zip3_age_gender_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_ref_population_by_zip3_age_gender_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_sdoh_econ_feature_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_sdoh_econ_feature_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_sdoh_econ_feature_weight_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_sdoh_econ_feature_weight_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_sdoh_econ_selected_feature_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_sdoh_econ_selected_feature_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_sdoh_econ_selected_feature_weight_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_sdoh_econ_selected_feature_weight_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_w_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_w_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "claims_with_risk_indicator"
+						},
+						"destination": {
+							"fileName": "development_xdaasclaims_with_risk_indicator.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "deceased_feature_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdeceased_feature_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "deceased_suppression_grid_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdeceased_suppression_grid_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "deceased_w_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdeceased_w_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_age_ranges_5_10_years_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_age_ranges_5_10_years_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_age_ranges_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_age_ranges_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_cdc_decease_by_county_year_month_weekday_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_cdc_decease_by_county_year_month_weekday_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_cdc_decease_by_state_year_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_cdc_decease_by_state_year_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_cdc_decease_county_year_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_cdc_decease_county_year_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_census_population_by_county_age_gender_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_census_population_by_county_age_gender_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_census_population_by_state_age_gender_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_census_population_by_state_age_gender_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_census_population_by_zip3_age_gender_distributed_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_census_population_by_zip3_age_gender_distributed_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_census_population_by_zip3_age_gender_v"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_census_population_by_zip3_age_gender_v.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_census_population_by_zip_age_gender_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_census_population_by_zip_age_gender_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_census_PR_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_census_PR_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_hcpcs_2020_codes_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_hcpcs_2020_codes_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_hcpcs_2020_sensitive_codes_v"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_hcpcs_2020_sensitive_codes_v.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_icd_codes_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_icd_codes_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_icd_sensitive_codes_v"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_icd_sensitive_codes_v.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_map_npi_state_zip_country_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_map_npi_state_zip_country_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_npi_location_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_npi_location_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_pos_sensitive_codes_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_pos_sensitive_codes_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_zip3_pop_lt_20k_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_zip3_pop_lt_20k_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_zip3_state_v"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_zip3_state_v.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "dim_zip_county_state_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasdim_zip_county_state_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "inc_claims_suppression_grid_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasinc_claims_suppression_grid_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "inc_claims_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasinc_claims_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "inc_claims_w_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasinc_claims_w_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "sdoh_econ_feature_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaassdoh_econ_feature_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "sdoh_econ_feature_weight_t"
+						},
+						"destination": {
+							"fileName": "development_xdaassdoh_econ_feature_weight_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "sdoh_feature_bucketing_t"
+						},
+						"destination": {
+							"fileName": "development_xdaassdoh_feature_bucketing_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "sdoh_feature_category_t"
+						},
+						"destination": {
+							"fileName": "development_xdaassdoh_feature_category_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "sdoh_feature_generalization_t"
+						},
+						"destination": {
+							"fileName": "development_xdaassdoh_feature_generalization_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "sdoh_feature_weight_t"
+						},
+						"destination": {
+							"fileName": "development_xdaassdoh_feature_weight_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "states_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasstates_t.txt"
+						}
+					},
+					{
+						"source": {
+							"dataset": "development_xdaas",
+							"table": "us_states_t"
+						},
+						"destination": {
+							"fileName": "development_xdaasus_states_t.txt"
+						}
+					}
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-12-18T21:20:58Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

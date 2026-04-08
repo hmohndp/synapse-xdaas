@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 4",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [record_id]\n,[input_token]\n,[udf_1]\n,[udf_2]\n,[udf_3]\n,[deceased_match_indicator]\n,[date_of_death]\n,[verified_or_proof_code]\n,[deceased_source]\n,[deceased_county]\n,[deceased_state]\n,[confidence_score]\n FROM [customer].[incr_mortality_t]\n\n\n ALTER TABLE [customer].[stg_incr_mortality_t] DROP COLUMN [udf_3];\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

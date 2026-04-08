@@ -1,0 +1,20 @@
+{
+	"name": "elsevier_run_log",
+	"properties": {
+		"folder": {
+			"name": "Elsevier Blend"
+		},
+		"content": {
+			"query": "/***********************************************/\n  1. The original request\n/***********************************************/\nInput:\n    [customer].[stg_incr_claims_1_t];\n    [customer].[stg_incr_claims_2_t];\n    [customer].[stg_incr_claims_3_t];\n    [customer].[stg_incr_claims_4_t];\n\n    [customer].[stg_incr_mortality_1_t];\n\n    [customer].[stg_incr_heii_1_t];\n\nOutput:\n    [appl].[deid_claims_1_t];\n    [appl].[deid_claims_2_t];\n    [appl].[deid_claims_3_t];\n    [appl].[deid_claims_4_t];\n\n    [appl].[deid_mortality_t];\n\n    [appl].[deid_heii_t];\n\nApproach: \n    Manual\n\n/***********************************************/\n  2. 09/27/2024 request\n/***********************************************/\ninput:\n    customer.ext_inc_claims_1000006_20240229_20240901_ELS_Cohort_Geo[1-6]_2_append_t\n    customer.ext_inc_mortality_1000006_20240229_20240901_ELS_Cohort_Geo[1-6]_2_deduped_token_list_appended_t\n\nOutput:\n    [appl].[elsevier_deid_claims_t]\n    [appl].[elsevier_deid_mortality_t]\n\nHistory data tracking tables:\n    [appl].[elsevier_claims_age_by_year_t]\n    [appl].[elsevier_mortality_tokens_t]\n\nApproach, i.e., steps 1-5 in the \"Elsevier Blend\" folder:\n    Step 1 creates external tables to access input data\n    Step 2 prepare the dimension tables for the cross-data redaction\n    For each input file:\n        Run either Step 3, 4, or 5\n        Check output using QA file elsevier_redaction_QA or elsevier_claims_only_redaction_QA\n        Export via Data Factory pipeline \"export_elsevier_deid_claims\" or \"export_elsevier_deid_mortality\" (** remember to change the output file name parameter **)\n        Note: do NOT run the next file before exporting is done because the output table name is shared\n\n/***********************************************/\n  3. 12/13/2024 request\n/***********************************************/\ninput:\n    customer.ext_inc_claims_LNR101_1000006_LNR101_3622901_ELS_All_2_append_t\n    customer.ext_inc_mortality_LNR101_1000006_LNR101_3622901_ELS_All_2_appended_t\n\nOutput:\n    [appl].[elsevier_deid_claims_t]\n    [appl].[elsevier_deid_mortality_t]\n\nHistory data tracking tables:\n    [appl].[elsevier_claims_age_by_year_t]\n    [appl].[elsevier_mortality_tokens_t]\n\nApproach, i.e., steps 1-5 in the \"Elsevier Blend\" folder:\n    Step 1 creates external tables to access input data\n    Step 2 prepare the dimension tables for the cross-data redaction\n    For each input file:\n        Run either Step 3, 4, or 5\n        Check output using QA file elsevier_redaction_QA or elsevier_claims_only_redaction_QA\n        Export via Data Factory pipeline \"export_elsevier_deid_claims\" or \"export_elsevier_deid_mortality\" (** remember to change the output file name parameter **)\n        Note: do NOT run the next file before exporting is done because the output table name is shared\n\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

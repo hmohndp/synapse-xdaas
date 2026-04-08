@@ -1,0 +1,30 @@
+{
+	"name": "incr_mortality_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DeIDStorageDev",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "21543979_ELSRealm_Mortality_20240501_cohort_1441701_Geo_appended.txt",
+				"folderPath": "21543979/Mortality/Inbound",
+				"fileSystem": "lexisnexis"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\"",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Input_Token|Record_ID|Deceased_Match_Indicator|Date_of_Death|Verified_or_Proof_Code|Deceased_Source|Deceased_County|Deceased_State|Confidence_Score",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

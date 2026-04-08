@@ -1,0 +1,66 @@
+{
+	"name": "AzureOptimizerClaimsStgTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSynapseAnalytics1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "record_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "input_token",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UDF1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UDF2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UDF3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deceased_match_indicator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "date_of_death",
+				"type": "nvarchar"
+			},
+			{
+				"name": "verified_or_proof_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deceased_source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deceased_county",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deceased_state",
+				"type": "nvarchar"
+			},
+			{
+				"name": "confidence_score",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "customer",
+			"table": "stg_claims_tmp_t"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

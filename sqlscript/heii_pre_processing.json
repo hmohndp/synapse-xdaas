@@ -1,0 +1,20 @@
+{
+	"name": "heii_pre_processing",
+	"properties": {
+		"folder": {
+			"name": "Optimizer"
+		},
+		"content": {
+			"query": "drop table opt.heii_t;\ncreate table opt.heii_t\nWITH\n(\n\tDISTRIBUTION = ROUND_ROBIN,\n\tCLUSTERED COLUMNSTORE INDEX\n) as \nselect \n    token, \n    gender,\n    cast(AgeInYears as float) as AgeInYears,\n    [IndIsDeceasedFlag],\n    [IndIsMarriedFlag],\n    case when ProbabilityWhite >= greatest(ProbabilityAsian, ProbabilityBlack, ProbabilityHispanic, ProbabilityOther) then 'White'\n    when ProbabilityBlack >= greatest(ProbabilityAsian, ProbabilityHispanic, ProbabilityOther, ProbabilityWhite) then 'Black'\n    when ProbabilityHispanic >= greatest(ProbabilityAsian, ProbabilityBlack, ProbabilityOther, ProbabilityWhite) then 'Hispanic'\n    when ProbabilityAsian >= greatest(ProbabilityBlack, ProbabilityHispanic, ProbabilityOther, ProbabilityWhite) then 'Asian'\n    when ProbabilityOther >= greatest(ProbabilityAsian, ProbabilityBlack, ProbabilityHispanic, ProbabilityWhite) then 'Other'\n    else 'Unknown' end as race,\n    zip,\n    case when z2.zip3 is null then '000' else coalesce(z1.zip3_to, substring(a.zip, 1, 3)) end as zip3,\n    a.state, \n    CountyName,\n    FIPSStateCounty,\n    city,\n    CensusTractBlockGroup,\n    case when CountyName is null then concat(a.state, '-XXXXX') else concat(a.state, '-', CountyName) end as StateCounty,\n    case when city is null then\n    case when CountyName is null then concat(a.state, '-XXXXX-XXXXX') else concat(a.state, '-', CountyName, '-XXXXX') end \n    else\n    case when CountyName is null then concat(a.state, '-XXXXX-', city) else concat(a.state, '-', CountyName, '-' , city) end\n    end as StateCountyCity\nfrom \n    customer.stg_heii_t a\n    left join dim.zip3_pop_lt_20k_t z1\n        on substring(a.zip, 1, 3) = z1.zip3_from\n    left join (select distinct zip3 from dim.census_population_by_zip3_age_gender_t) z2\n        on coalesce(z1.zip3_to, substring(a.zip, 1, 3)) = z2.zip3\nwhere \n    (a.gender is not null or a.state is not null or a.AgeInYears is not null or a.IndIsMarriedFlag is not null or a.IndIsDeceasedFlag is not null or a.zip is not null or \n    a.CountyName is not null or a.FIPSStateCounty is not null or a.ProbabilityWhite is not null or a.CurrAddrDistance is not null or a.LA1and10 is not null)\n;\n\nselect count(*), count(distinct token) from opt.heii_t;\n--14291646\n\nselect distinct IndIsDeceasedFlag\nfrom \n  customer.stg_heii_t a where IndIsDeceasedFlag = ''\norder by 1",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

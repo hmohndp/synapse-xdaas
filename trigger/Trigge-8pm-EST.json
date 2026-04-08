@@ -1,0 +1,39 @@
+{
+	"name": "Trigge-8pm-EST",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Pause SQL Pools",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"ResourceGroup": "de-id-resource-group-development",
+					"SubscriptionID": "4842a928-4c96-4cbb-b0c5-1f90c284e488",
+					"WorkspaceName": "xdaas",
+					"SQLPoolName": "xdaas_dedicated_sql_pool",
+					"PauseorResume": "Pause"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2025-01-03T23:07:00",
+				"timeZone": "Eastern Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						20
+					]
+				}
+			}
+		}
+	}
+}

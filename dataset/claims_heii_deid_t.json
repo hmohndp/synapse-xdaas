@@ -1,0 +1,231 @@
+{
+	"name": "claims_heii_deid_t",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "deid storage dev",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "claims_heii_xd.csv",
+				"folderPath": "claims_heii_xd",
+				"container": "lexisnexis"
+			},
+			"columnDelimiter": "|",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "token",
+				"type": "String"
+			},
+			{
+				"name": "vendor",
+				"type": "String"
+			},
+			{
+				"name": "claim_number",
+				"type": "String"
+			},
+			{
+				"name": "claim_type",
+				"type": "String"
+			},
+			{
+				"name": "dos_begin",
+				"type": "String"
+			},
+			{
+				"name": "dos_end",
+				"type": "String"
+			},
+			{
+				"name": "pract_npi",
+				"type": "String"
+			},
+			{
+				"name": "svc_facility_npi",
+				"type": "String"
+			},
+			{
+				"name": "patient_gender",
+				"type": "String"
+			},
+			{
+				"name": "patient_age",
+				"type": "String"
+			},
+			{
+				"name": "patient_zip3",
+				"type": "String"
+			},
+			{
+				"name": "patient_race",
+				"type": "String"
+			},
+			{
+				"name": "line_seq",
+				"type": "String"
+			},
+			{
+				"name": "procedure_scheme",
+				"type": "String"
+			},
+			{
+				"name": "procedure_code",
+				"type": "String"
+			},
+			{
+				"name": "proc_md_1",
+				"type": "String"
+			},
+			{
+				"name": "proc_md_2",
+				"type": "String"
+			},
+			{
+				"name": "proc_md_3",
+				"type": "String"
+			},
+			{
+				"name": "proc_md_4",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code1",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code2",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code3",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code4",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code5",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code6",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code7",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code8",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code9",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code10",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code11",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code12",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code13",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code14",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code15",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code16",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code17",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code18",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code19",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_code20",
+				"type": "String"
+			},
+			{
+				"name": "icd_version",
+				"type": "String"
+			},
+			{
+				"name": "drg_code",
+				"type": "String"
+			},
+			{
+				"name": "ndc_code",
+				"type": "String"
+			},
+			{
+				"name": "setting_of_care",
+				"type": "String"
+			},
+			{
+				"name": "units_of_service",
+				"type": "String"
+			},
+			{
+				"name": "payer",
+				"type": "String"
+			},
+			{
+				"name": "line_of_business",
+				"type": "String"
+			},
+			{
+				"name": "flg_837",
+				"type": "String"
+			},
+			{
+				"name": "claim_charge_amnt",
+				"type": "String"
+			},
+			{
+				"name": "claim_paid_amnt",
+				"type": "String"
+			},
+			{
+				"name": "claim_allowed_amnt",
+				"type": "String"
+			},
+			{
+				"name": "patient_resp_amt",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}
