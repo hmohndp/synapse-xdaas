@@ -7,8 +7,8 @@
 				"language": "sql"
 			},
 			"currentConnection": {
-				"databaseName": "master",
-				"poolName": "Built-in"
+				"databaseName": "xdaasnew",
+				"poolName": "xdaasnew"
 			},
 			"resultLimit": 5000
 		},
