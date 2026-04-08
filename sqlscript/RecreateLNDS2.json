@@ -1,0 +1,17 @@
+{
+	"name": "RecreateLNDS2",
+	"properties": {
+		"content": {
+			"query": "CREATE EXTERNAL DATA SOURCE [lexisnexis_deidstrgeaccdevelopment_dfs_core_windows_net2] WITH \n(\tTYPE = HADOOP,\n\tLOCATION = N'abfss://lexisnexis@deidstrgeaccdevelopment.dfs.core.windows.net'\n);\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
