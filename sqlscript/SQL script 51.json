@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 51",
+	"properties": {
+		"content": {
+			"query": "CREATE EXTERNAL DATA SOURCE [target_adls] WITH \n(\tTYPE = HADOOP,\n\tLOCATION = N'abfss://xdaasnewdatalakefs@xdaasnewdatalake.dfs.core.windows.net'\n);\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "xdaas_dedicated_sql_pool",
+				"poolName": "xdaas_dedicated_sql_pool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
